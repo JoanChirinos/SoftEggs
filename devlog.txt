@@ -1,0 +1,9 @@
+SoftEggs - Daniel Gelfand && T Fabiha && Britni Canale && Dennis Chen
+SoftDev1 pd6
+P#00: Da Art of Storytellin'
+
+gelfandD -- 2018-10-16 19:10
+1. The team will make sure to communicate changes so good code
+    does not become filled with errors and hard to debug.
+2. The team will not drive itself crazy. We shall not write
+   code that is irritating to understand and process.
