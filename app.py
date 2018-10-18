@@ -27,6 +27,14 @@ def register():
     return render_template("register.html")     #Displays page allowing user to register
 
 
+@app.route("/auth", methods=["POST"])
+def authorize()
+    if log_in(request.form["username"], request.form["password"]):
+        return redirect(url_for("home")
+    flash("Incorrect Login Information")
+    return redirect(url_for("login"))
+
+
 @app.route("/home") #MUST ADD METHODS, THIS WILL BE USER BASED
 def home():
     #Takes info from form
@@ -35,7 +43,7 @@ def home():
     return render_template("home.html") #Include all info from database afterward to be displayed
 
 
-@app.route("/view") 
+@app.route("/view")
 def view():
     #Accesses databases to get user-specific information
     return render_template("view.html") #include info from database afterwward to be displayed
@@ -59,7 +67,7 @@ def create():
     #Adds new story to database
     return render_template("create.html")
 
-    
+
 
 if __name__ == "__main__":
     app.debug = True
