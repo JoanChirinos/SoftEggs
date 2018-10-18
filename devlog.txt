@@ -60,3 +60,10 @@ chenD -- 2018-10-18 12:36
 1. Created the code for the html login page- the username and
 pw textboxes, submit, and link to register
 ==============================================================
+
+chenD -- 2018-10-18 17:28
+--------------------------------------------------------------
+1. Finished the login page, added a logout button, and worked
+on register-got errors to work, just need to it to add user
+to database
+==============================================================
