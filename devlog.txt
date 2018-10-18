@@ -67,3 +67,9 @@ chenD -- 2018-10-18 17:28
 on register-got errors to work, just need to it to add user
 to database
 ==============================================================
+
+gelfandD -- 2018-10-18 20:00
+--------------------------------------------------------------
+1. Uploaded a database file with stories table and login table.
+2. Test values were inserted into the tables.
+==============================================================
