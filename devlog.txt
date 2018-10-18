@@ -48,3 +48,9 @@ canaleB -- 2018-10-17 20:32
 1. Created framework for app.py with basic functions,
    commented purpose & things to be implemented
 ==============================================================
+
+chenD -- 2018-10-17 21:44
+--------------------------------------------------------------
+1. Created framework for main html pages using inheritence,
+commented what general things would be put inside the blocks
+==============================================================
