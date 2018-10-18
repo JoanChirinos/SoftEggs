@@ -54,3 +54,9 @@ chenD -- 2018-10-17 21:44
 1. Created framework for main html pages using inheritence,
 commented what general things would be put inside the blocks
 ==============================================================
+
+chenD -- 2018-10-18 12:36
+--------------------------------------------------------------
+1. Created the code for the html login page- the username and
+pw textboxes, submit, and link to register
+==============================================================
