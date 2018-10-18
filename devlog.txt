@@ -34,3 +34,10 @@ canaleB -- 2018-10-16 23:08
 2. Added component pieces to site map, specified actions being
    taken and data being transferred between pages
 ==============================================================
+
+
+canaleB -- 2018-10-17 20:12
+--------------------------------------------------------------
+1. Added starter kit to repository
+
+==============================================================
