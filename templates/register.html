@@ -1,16 +1,31 @@
 {% extends "base.html" %}
 
 {% block head %}
-<!-- only formatting probably -->
+<!-- heading -->
+<h1> Register </h1>
 {% endblock %}
 
 {% block title %}
 <!-- title of the website -->
+Register
 {% endblock %}
 
 {% block body %}
-<!-- username, pw, and confirm pw box, submit button,
-already registered link that goes to login page -->
+Username must be 4 characters or more<br><br>
+<!-- username, pw, and confirm pw boxes and register button-->
+<form action = "/authR" method = "POST">
+  Username : <input type = "type" name = "username"> <br>
+  Password : <input type = "password" name = "password"><br>
+  Confirm Password : <input type = "password" name = "confirmpw">
+  <input type = "submit" name = "Register">
+</form>
+{% set msg = get_flashed_messages() %}
+{% for each in msg %}
+{{each}}
+{% endfor %}
+<br>
+<!-- link to login -->
+<a href = "/login"> Back to Login </a>
 {% endblock %}
 
 {% block heading %}

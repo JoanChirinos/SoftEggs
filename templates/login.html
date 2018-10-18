@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block head %}
-<!-- only formatting probably -->
+<!-- heading -->
 <h1> Login </h1>
 {% endblock %}
 
@@ -11,18 +11,19 @@ Login
 {% endblock %}
 
 {% block body %}
-<!--where the form for user and pw is going to be,
- also submit and register-->
+ <!-- username and password input box w/ submit button -->
  <form action = "/auth" method = "POST">
    Username : <input type = "type" name = "username"> <br>
    Password : <input type = "password" name = "password">
    <input type = "submit" name = "Login">
  </form>
- {% set msg = get_flashed_messages() %} {# if wrong username or pw inputted, flash the error message #}
+ <!-- message saying wrong login info flashes if wrong username or pw entered-->
+ {% set msg = get_flashed_messages() %}
  {% for each in msg %}
  {{each}}
  {% endfor %}
  <br>
+ <!-- link to register -->
  <a href = "/register"> Not Registered Yet? </a>
 {% endblock %}
 
