@@ -28,11 +28,14 @@ def register():
 
 
 @app.route("/auth", methods=["POST"])
-def authorize()
-    if log_in(request.form["username"], request.form["password"]):
-        return redirect(url_for("home")
-    flash("Incorrect Login Information")
-    return redirect(url_for("login"))
+def authorize():
+    #if log_in(request.form["username"], request.form["password"]):
+    if request.form['username'] == "dennis" and request.form['password'] == 'abc':
+        session['username'] = request.args['username']
+        return redirect(url_for("home"))
+    else:
+        flash("Incorrect Login Information")
+        return redirect(url_for("login"))
 
 
 @app.route("/home") #MUST ADD METHODS, THIS WILL BE USER BASED

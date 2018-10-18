@@ -2,16 +2,29 @@
 
 {% block head %}
 <!-- only formatting probably -->
+<h1> Login </h1>
 {% endblock %}
 
 {% block title %}
 <!-- title of the website -->
+Login
 {% endblock %}
 
 {% block body %}
 <!--where the form for user and pw is going to be,
  also submit and register-->
-{endblock}
+ <form action = "/authorize" method = "POST">
+   Username : <input type = "type" name = "username"> <br>
+   Password : <input type = "password" name = "password"><br>
+   <input type = "submit" name = "Login">
+ </form>
+ <a href = "/register"> Not Registered Yet? </a>
+{% endblock %}
+
+{% set msg = get_flashed_messages() %} {# if wrong username or pw inputted, flash the error message #}
+{% for each in msg %}
+{{each}}
+{% endfor %}
 
 {% block heading %}
 <!--empty!-->
