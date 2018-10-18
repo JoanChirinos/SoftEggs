@@ -7,8 +7,10 @@
 
 
 from flask import Flask, render_template, session, request, url_for, redirect, flash
+import os
 
 app = Flask(__name__)
+app.secret_key = os.urandom(32)
 
 @app.route("/")
 def hello_world():
@@ -31,12 +33,21 @@ def register():
 def authorize():
     #if log_in(request.form["username"], request.form["password"]):
     if request.form['username'] == "dennis" and request.form['password'] == 'abc':
-        session['username'] = request.args['username']
+        session['username'] = request.form['username']
         return redirect(url_for("home"))
     else:
         flash("Incorrect Login Information")
         return redirect(url_for("login"))
 
+@app.route('/logout')
+def logout():
+
+    #these pop() methods removes the variable we inputted in beginning, effectively logging out the user
+    session.pop('username', None)
+    session.pop('password', None)
+
+    #goes back to the login page
+    return redirect(url_for('login'))
 
 @app.route("/home") #MUST ADD METHODS, THIS WILL BE USER BASED
 def home():

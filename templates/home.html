@@ -2,6 +2,9 @@
 
 {% block head %}
 <!--search bar and logout button here -->
+<form action = "/logout">
+  <input type = "submit" value = "logout"> {#button for logging out #}
+</form>
 {% endblock %}
 
 {% block title %}
@@ -10,7 +13,7 @@
 
 {% block body %}
 <!--shows the whole story for the ones you edited -->
-{endblock}
+{% endblock %}
 
 {% block heading %}
 <!-- probably empty unless story title here -->
