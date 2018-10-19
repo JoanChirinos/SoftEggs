@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block head %}
+<!--search bar and logout button here -->
+<form action="/search">
+  Search:<input type = "text"></form>
+<form action = "/logout">
+  <input type = "submit" value = "logout"> <!--button for logging out -->
+</form>
+{% endblock %}
