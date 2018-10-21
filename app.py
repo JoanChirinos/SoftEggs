@@ -52,7 +52,7 @@ def authRegister():
 @app.route("/auth", methods=["POST"])
 def authorize():
     #if username and pw is correct
-    if access_data.log_in(request.form["username"], request.form["password"]):
+    if access_data.login(request.form["username"], request.form["password"]):
     #if request.form['username'] == "dennis" and request.form['password'] == 'abc':
         #put user in session, go to home page
         session['username'] = request.form['username']
