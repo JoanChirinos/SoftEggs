@@ -45,7 +45,6 @@ def login(user,pwd):
 
 '''
 login('bob', 'bobby')
-
 print(login('bobby','bobbster')) #False
 print(login('bobby','bobster')) #True
 '''
@@ -125,3 +124,33 @@ def get_id(user):
     db.close()  #close database
 
     return(id[-1])
+
+def create(n_story, content, tags, id):
+    DB_FILE="/data/discoeggs.db"
+    db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
+    c = db.cursor()
+
+    # dont do anything with tags for now
+    # check to make sure story name doesnt exist yet
+    command = "SELECT story_name FROM stories WHERE story_name = \'{}\'".format(n_story)
+    c.execute(command)
+
+    #Retrieve the story with provided story name
+    story = c.fetchall()
+    #print(storyNames)
+    #print(story)
+    if (len(story) != 0):
+        # return False # if story name exists
+        return False
+
+    # add in story, content, 1, editor_id
+    params = (n_story, content, 1, id)
+    command = "INSERT INTO stories VALUES(?,?,?,?)"
+    c.execute(command,params)
+
+    db.commit() #save changes
+    db.close()  #close database
+
+    return True
+
+#create("Knights", "There were knights.", "knight", 1 )
