@@ -106,7 +106,7 @@ def create():
 def createstory():  #adds to database
     #if story already exists
         #return redirect(url_for("create"))
-    #create(request.args["storytitle"], request.args["entry"])
+    access_data.create(request.args["storytitle"], request.args["entry"], request.args["tags"], access_data.get_id(session['username']))
     return redirect(url_for("home"))
 
 @app.route("/addStory", methods = ["GET"])

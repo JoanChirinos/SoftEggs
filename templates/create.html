@@ -5,11 +5,14 @@ Create A Story
 {% endblock %}
 
 {% block body %}
+<!-- tells user to input a title, an intro entry, and tags -->
 <form action = "/createstory" method = "GET" id = "create">
   Title<br>
-  <input type = "type" name = "storytitle"> <br>
+  <input type = "text" name = "storytitle"> <br>
   Entry<br>
   <textarea rows = "10" columns="100" form="create" name="entry"></textarea><br>
+  Tags<br>
+  <input type="text" name = "tags"><br>
   <input type = "submit" name = "Submit">
 </form>
 {% endblock %}
