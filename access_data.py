@@ -6,8 +6,8 @@ DB_FILE="discoeggs.db"
 db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor()
 
-def login(user,pwd):
-    return true
+def log_in(user,pwd):
+    return True
 
 def view_one(story):
 

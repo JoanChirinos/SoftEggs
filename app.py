@@ -8,6 +8,7 @@
 
 from flask import Flask, render_template, session, request, url_for, redirect, flash
 import os
+import access_data
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
@@ -51,8 +52,8 @@ def authRegister():
 @app.route("/auth", methods=["POST"])
 def authorize():
     #if username and pw is correct
-    #if log_in(request.form["username"], request.form["password"]):
-    if request.form['username'] == "dennis" and request.form['password'] == 'abc':
+    if access_data.log_in(request.form["username"], request.form["password"]):
+    #if request.form['username'] == "dennis" and request.form['password'] == 'abc':
         #put user in session, go to home page
         session['username'] = request.form['username']
         return redirect(url_for("home"))
@@ -91,11 +92,11 @@ def add():
     return render_template("add.html")
 
 
-@app.route("/search")
+@app.route("/search", methods=["GET"])
 def searchresults():
     #takes info from search textbox
     #checks databases for related stories
-    return render_template("search.html")
+    return render_template("search.html", results = request.args["input"])
 
 
 @app.route("/create")

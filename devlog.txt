@@ -84,3 +84,10 @@ canaleB -- 2018-10-21 14:03
 --------------------------------------------------------------
 1. Fixed inheritance, adding headings, adjusting html files
 ==============================================================
+
+canaleB -- 2018-10-21 14:20
+--------------------------------------------------------------
+1. Added heading with home link to every page
+2. Beginning to implement hardcoded functions that will be
+   used to access databases
+==============================================================
