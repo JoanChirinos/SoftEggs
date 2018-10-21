@@ -87,8 +87,8 @@ def view():
 @app.route("/add")
 def add():
     #Accesses database to get most recent entry
-    return render_template("add.html")
-
+    #return render_template("add.html", storyTitle = "Story Title", prevEntry = access_data.prev_add("storyTitle","id"))
+    return render_template("add.html", storyTitle = "Story Title", prevEntry = "________TEXT_________")
 
 @app.route("/search", methods=["GET"])
 def searchresults():
@@ -106,10 +106,13 @@ def create():
 def createstory():  #adds to database
     #if story already exists
         #return redirect(url_for("create"))
-    #create(request.args["storytitle"], request,args["entry"])
+    #create(request.args["storytitle"], request.args["entry"])
     return redirect(url_for("home"))
 
-
+@app.route("/addStory", methods = ["GET"])
+def addStory():
+    #add(request.args["storytitle"],request.args["entry"],request.args["tags"], session['username'])
+    return redirect(url_for("home"))
 
 if __name__ == "__main__":
     app.debug = True
