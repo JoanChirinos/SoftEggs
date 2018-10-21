@@ -73,3 +73,8 @@ gelfandD -- 2018-10-18 20:00
 1. Uploaded a database file with stories table and login table.
 2. Test values were inserted into the tables.
 ==============================================================
+
+gelfandD -- 2018-10-20 22:50
+--------------------------------------------------------------
+1. Wrote access_data file which currently handles access to one or all stories.
+==============================================================
