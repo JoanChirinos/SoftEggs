@@ -91,3 +91,9 @@ canaleB -- 2018-10-21 14:20
 2. Beginning to implement hardcoded functions that will be
    used to access databases
 ==============================================================
+
+gelfandD -- 2018-10-21 15:56
+--------------------------------------------------------------
+1. Added signup and login to access_data.py with Fabiha.
+2. Put discoeggs.db in data folder and access_data.py in util folder
+==============================================================
