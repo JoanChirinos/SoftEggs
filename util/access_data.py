@@ -1,6 +1,6 @@
 import sqlite3
 
-DB_FILE="./data/discoeggs.db"
+DB_FILE="../data/discoeggs.db"
 
 db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor()
@@ -16,9 +16,9 @@ def sign_up(user, pwd):
     c.execute("INSERT INTO login VALUES (?,?,?)", params)
     return True
 
-sign_up("Scriptor","nah")
+#sign_up("Test","testpassword")
 
-def log_in(user,pwd):
+def login(user,pwd):
     command = "SELECT password FROM login WHERE username = \'{}\'".format(user)
     c.execute(command)
     password = c.fetchone()[0]
