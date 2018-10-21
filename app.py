@@ -34,19 +34,19 @@ def authRegister():
     if request.form['username'].strip(" ") == "" or len(request.form['username'].strip(" ")) < 4:
         #if so, flash an error
         flash("Username is too short")
-        return redirect(url_for("register"))
+        return redirect(url_for("register"))  #redirects to register
     #checks if a password exists
     elif request.form['password'].strip(" ") == "":
         flash("No password inputted")
-        return redirect(url_for("register"))
+        return redirect(url_for("register"))  #redirects to register
     #checks if passwords are the same in both boxes
     elif request.form['password'] != request.form['confirmpw']:
         #if not, flash an error
         flash("Passwords do not match")
-        return redirect(url_for("register"))
+        return redirect(url_for("register"))  #redirects to register
     else:
         #add user to database
-        return redirect(url_for("login"))
+        return redirect(url_for("login"))     #redirects to login after successful register
 
 @app.route("/auth", methods=["POST"])
 def authorize():
@@ -64,7 +64,7 @@ def authorize():
 @app.route('/logout')
 def logout():
 
-    #pops user from session, effectively logging out the user
+    #pops user from session, logging out the user
     session.pop('username', None)
     session.pop('password', None)
 
