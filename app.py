@@ -8,7 +8,7 @@
 
 from flask import Flask, render_template, session, request, url_for, redirect, flash
 import os
-import access_data
+from util import access_data
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32)

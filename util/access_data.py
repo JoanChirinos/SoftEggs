@@ -14,11 +14,11 @@ def sign_up(user, pwd):
     #print(rows)
     params = (user, pwd, rows+1)
     c.execute("INSERT INTO login VALUES (?,?,?)", params)
-    return true
+    return True
 
 sign_up("Scriptor","nah")
 
-def login(user,pwd):
+def log_in(user,pwd):
     command = "SELECT password FROM login WHERE username = \'{}\'".format(user)
     c.execute(command)
     password = c.fetchone()[0]
