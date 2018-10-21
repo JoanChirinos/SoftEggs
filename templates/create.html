@@ -5,11 +5,11 @@ Create A Story
 {% endblock %}
 
 {% block body %}
-<form action = "/home" method = "GET" id = "create">
+<form action = "/createstory" method = "GET" id = "create">
   Title<br>
   <input type = "type" name = "storytitle"> <br>
   Entry<br>
-  <textarea rows = "10" columns="50" form="create" name="entry"></textarea><br>
+  <textarea rows = "10" columns="100" form="create" name="entry"></textarea><br>
   <input type = "submit" name = "Submit">
 </form>
 {% endblock %}

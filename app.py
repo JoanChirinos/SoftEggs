@@ -75,8 +75,7 @@ def logout():
 @app.route("/home") #MUST ADD METHODS, THIS WILL BE USER BASED
 def home():
     stories = access_data.view_all(access_data.get_id(session["username"]))
-    print(stories)
-    return render_template("home.html") #Include all info from database afterward to be displayed
+    return render_template("home.html", stories = stories) #Include all info from database afterward to be displayed
 
 
 @app.route("/view")
@@ -102,6 +101,13 @@ def searchresults():
 def create():
     #Adds new story to database
     return render_template("create.html")
+
+@app.route("/createstory", methods=["GET"])
+def createstory():
+    #if story already exists
+        #return redirect(url_for("create"))
+    #create(request.args["storytitle"], request,args["entry"])
+    return redirect(url_for("home"))
 
 
 

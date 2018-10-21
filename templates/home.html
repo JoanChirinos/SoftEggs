@@ -5,6 +5,13 @@ Home
 {% endblock %}
 
 {% block body %}
+{%for story in stories%}
+<b>{{story}}</b><br>
+{%for entry in stories[story]%}
+{{entry}}<br>
+{%endfor%}
+<br><br>
+{%endfor%}
 <form action = "/create">  <input type="submit" value = "Create"> </form>
 <form action = "/add">  <input type ="submit" value = "Add"></form>
 
