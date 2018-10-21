@@ -112,3 +112,12 @@ canaleB -- 2018-10-21 18:22
 4. Added view functionality to home.html, previously edited
    stories are now viewable in home.
 ==============================================================
+
+chenD -- 2018-10-21 19:48
+--------------------------------------------------------------
+1. Created add.html and added placeholders for the title
+and previous entry
+2. Created addstory(), which will add the entry that the user
+submitted into the database
+3. Added tags to create.html
+==============================================================
