@@ -32,7 +32,7 @@ def login(user,pwd):
     command = "SELECT password FROM login WHERE username = \'{}\'".format(user)
     c.execute(command)
     password = c.fetchone()
-    print(password)
+    #print(password)
 
     db.commit() #save changes
     db.close()  #close database
@@ -126,7 +126,7 @@ def get_id(user):
     return(id[-1])
 
 def create(n_story, content, tags, id):
-    DB_FILE="/data/discoeggs.db"
+    DB_FILE= "data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
 
