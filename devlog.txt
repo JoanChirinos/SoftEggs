@@ -97,3 +97,8 @@ gelfandD -- 2018-10-21 15:56
 1. Added signup and login to access_data.py with Fabiha.
 2. Put discoeggs.db in data folder and access_data.py in util folder
 ==============================================================
+
+fabihaT -- 2018-10-21 16:52
+--------------------------------------------------------------
+1. Fixed major bug in access_data.py.
+==============================================================
