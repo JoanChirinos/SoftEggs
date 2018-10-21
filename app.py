@@ -103,7 +103,7 @@ def create():
     return render_template("create.html")
 
 @app.route("/createstory", methods=["GET"])
-def createstory():
+def createstory():  #adds to database
     #if story already exists
         #return redirect(url_for("create"))
     #create(request.args["storytitle"], request,args["entry"])
