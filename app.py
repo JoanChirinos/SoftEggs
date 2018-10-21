@@ -46,7 +46,7 @@ def authRegister():
         flash("Passwords do not match")
         return redirect(url_for("register"))  #redirects to register
     else:
-        #add user to database
+        access_data.sign_up(request.form['username'].strip(" "), request.form['password'])
         return redirect(url_for("login"))     #redirects to login after successful register
 
 @app.route("/auth", methods=["POST"])
@@ -74,10 +74,8 @@ def logout():
 
 @app.route("/home") #MUST ADD METHODS, THIS WILL BE USER BASED
 def home():
-    #Takes info from form
-    #Adds to session
-    #Accesses databases to get user-specific information
-    return render_template("home.html") #Include all info from database afterward to be displayed
+    stories = access_data.view_all(access_data.get_id(session["username"]))
+    return render_template("home.html", stories = stories) #Include all info from database afterward to be displayed
 
 
 @app.route("/view")
@@ -89,8 +87,8 @@ def view():
 @app.route("/add")
 def add():
     #Accesses database to get most recent entry
-    return render_template("add.html")
-
+    #return render_template("add.html", storyTitle = "Story Title", prevEntry = access_data.prev_add("storyTitle","id"))
+    return render_template("add.html", storyTitle = "Story Title", prevEntry = "________TEXT_________")
 
 @app.route("/search", methods=["GET"])
 def searchresults():
@@ -104,7 +102,17 @@ def create():
     #Adds new story to database
     return render_template("create.html")
 
+@app.route("/createstory", methods=["GET"])
+def createstory():  #adds to database
+    #if story already exists
+        #return redirect(url_for("create"))
+    #create(request.args["storytitle"], request.args["entry"])
+    return redirect(url_for("home"))
 
+@app.route("/addStory", methods = ["GET"])
+def addStory():
+    #add(request.args["storytitle"],request.args["entry"],request.args["tags"], session['username'])
+    return redirect(url_for("home"))
 
 if __name__ == "__main__":
     app.debug = True

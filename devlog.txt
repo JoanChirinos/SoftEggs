@@ -102,3 +102,13 @@ fabihaT -- 2018-10-21 16:52
 --------------------------------------------------------------
 1. Fixed major bug in access_data.py.
 ==============================================================
+
+canaleB -- 2018-10-21 18:22
+--------------------------------------------------------------
+1. Started on create.html, has all necessary fields and forms
+2. Started on createstory() in app.py, which will access/add
+   to databases & and make sure there are no repeat stories
+3. Added view_all() to home(), tested with hardcoded stories
+4. Added view functionality to home.html, previously edited
+   stories are now viewable in home.
+==============================================================

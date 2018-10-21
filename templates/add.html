@@ -1,0 +1,21 @@
+{% extends "sitebase.html" %}
+
+{% block title %}
+Create A Story
+{% endblock %}
+
+{% block body %}
+<!-- displays story title, prev entry and puts your entry into the db -->
+<form action = "/addStory" method = "GET" id = "add">
+  <h2>{{storyTitle}}<br></h2>
+  Previous Entry:<br>
+  &emsp;&emsp;&emsp;{{prevEntry}}<br>
+  Add to the story:<br>
+  <textarea rows = "10" columns="100" form="add" name="entry"></textarea><br>
+  <input type = "submit" name = "Submit">
+</form>
+{% endblock %}
+
+{% block heading %}
+<!-- empty unless something needs to be emphasized -->
+{% endblock %}

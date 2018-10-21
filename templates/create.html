@@ -5,8 +5,13 @@ Create A Story
 {% endblock %}
 
 {% block body %}
-<!-- textbox for tags, intro entry, and story title,
-also submit button -->
+<form action = "/createstory" method = "GET" id = "create">
+  Title<br>
+  <input type = "type" name = "storytitle"> <br>
+  Entry<br>
+  <textarea rows = "10" columns="100" form="create" name="entry"></textarea><br>
+  <input type = "submit" name = "Submit">
+</form>
 {% endblock %}
 
 {% block heading %}

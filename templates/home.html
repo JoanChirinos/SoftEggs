@@ -5,6 +5,15 @@ Home
 {% endblock %}
 
 {% block body %}
+{%for story in stories%}
+<b>{{story}}</b><br>
+{%for entry in stories[story]%}
+{{entry}}<br>
+{%endfor%}
+<br><br>
+{%endfor%}
+<h1><a href = "/create"> Create a Story </a></h1>
+<form action = "/add">  <input type ="submit" value = "Add"></form>
 
 
 <!--shows the whole story for the ones you edited -->
