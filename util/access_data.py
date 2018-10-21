@@ -32,7 +32,7 @@ def login(user,pwd):
     command = "SELECT password FROM login WHERE username = \'{}\'".format(user)
     c.execute(command)
     password = c.fetchone()
-    #print(password)
+    print(password)
 
     db.commit() #save changes
     db.close()  #close database

@@ -46,7 +46,7 @@ def authRegister():
         flash("Passwords do not match")
         return redirect(url_for("register"))  #redirects to register
     else:
-        #add user to database
+        access_data.sign_up(request.form['username'].strip(" "), request.form['password'])
         return redirect(url_for("login"))     #redirects to login after successful register
 
 @app.route("/auth", methods=["POST"])
@@ -74,9 +74,8 @@ def logout():
 
 @app.route("/home") #MUST ADD METHODS, THIS WILL BE USER BASED
 def home():
-    #Takes info from form
-    #Adds to session
-    #Accesses databases to get user-specific information
+    stories = access_data.view_all(access_data.get_id(session["username"]))
+    print(stories)
     return render_template("home.html") #Include all info from database afterward to be displayed
 
 
