@@ -154,3 +154,26 @@ def create(n_story, content, tags, id):
     return True
 
 #create("Knights", "There were knights.", "knight", 1 )
+
+#Checks if user has previously added to a given story
+#Returns true if the user have added previously, false otherwise
+def prev_add(n_story,id):
+    DB_FILE= "data/discoeggs.db"
+    db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
+    c = db.cursor()
+
+    command = "SELECT editor_id FROM stories WHERE story_name = \"{}\" ".format(n_story)
+    c.execute(command)
+
+    ids = c.fetchall()
+    db.commit()
+    db.close()
+    #print(ids)
+    for each in ids:
+        if (each[0]==id):
+            #Returns True if editor prevously added to the given story
+            return True
+    #Editor has not added previously to givn story
+    return False
+
+prev_add("egg boss", 1)
