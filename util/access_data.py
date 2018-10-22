@@ -130,7 +130,7 @@ def create(n_story, content, tags, id):
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
 
-    # dont do anything with tags for now
+    #print(splitted)
     # check to make sure story name doesnt exist yet
     command = "SELECT story_name FROM stories WHERE story_name = \'{}\'".format(n_story)
     c.execute(command)
@@ -148,12 +148,21 @@ def create(n_story, content, tags, id):
     command = "INSERT INTO stories VALUES(?,?,?,?)"
     c.execute(command,params)
 
+
+    splitted = tags.split(",")
+    for i in range(len(splitted)):
+        splitted[i] = splitted[i].replace(" ", "")
+
+        params = (n_story, splitted[i])
+        command = "INSERT INTO tags VALUES(?,?)"
+        c.execute(command,params)
+
     db.commit() #save changes
     db.close()  #close database
 
     return True
 
-#create("Knights", "There were knights.", "knight", 1 )
+#create("Fights", "There were fights.", "fights,fight hood", 1 )
 
 #Checks if user has previously added to a given story
 #Returns true if the user have added previously, false otherwise
@@ -176,4 +185,4 @@ def prev_add(n_story,id):
     #Editor has not added previously to givn story
     return False
 
-prev_add("egg boss", 1)
+#prev_add("egg boss", 1)
