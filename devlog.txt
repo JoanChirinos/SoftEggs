@@ -74,6 +74,13 @@ gelfandD -- 2018-10-18 20:00
 2. Test values were inserted into the tables.
 ==============================================================
 
+canaleB -- 2018-10-19 12:32
+--------------------------------------------------------------
+1. Added commented-out code using functions from database.py
+   (not yet written)
+2. Began refining html files
+==============================================================
+
 gelfandD -- 2018-10-20 22:50
 --------------------------------------------------------------
 1. Wrote access_data file which currently handles access to
