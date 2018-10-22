@@ -87,14 +87,15 @@ def view():
 @app.route("/add")
 def add():
     #Accesses database to get most recent entry
-    #return render_template("add.html", storyTitle = "Story Title", prevEntry = access_data.prev_add("storyTitle","id"))
+    #return render_template("add.html", storyTitle = , prevEntry = access_data.prev_add("storyTitle","id"))
     return render_template("add.html", storyTitle = "Story Title", prevEntry = "________TEXT_________")
 
 @app.route("/search", methods=["GET"])
 def searchresults():
     #takes info from search textbox
     #checks databases for related stories
-    return render_template("search.html", results = request.args["input"])
+    #stories = access_data.stories_of(request.args["input"]))
+    return render_template("search.html", results = stories)
 
 
 @app.route("/create")
