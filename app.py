@@ -46,6 +46,7 @@ def authRegister():
         return redirect(url_for("register"))
     else:
         #add user to database
+        #sign_up(request.form["username"], request.form["password"])
         return redirect(url_for("login"))
 
 @app.route("/auth", methods=["POST"])
@@ -76,7 +77,8 @@ def home():
     #Takes info from form
     #Adds to session
     #Accesses databases to get user-specific information
-    return render_template("home.html") #Include all info from database afterward to be displayed
+    #stories = view(get_id(session["username"])
+    return render_template("home.html") #, view = stories) #Include all info from database afterward to be displayed
 
 
 @app.route("/view")
