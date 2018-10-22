@@ -75,7 +75,7 @@ def logout():
 @app.route("/home") #MUST ADD METHODS, THIS WILL BE USER BASED
 def home():
     stories = access_data.view_all(access_data.get_id(session["username"]))
-    return render_template("home.html", stories = stories) #Include all info from database afterward to be displayed
+    return render_template("home.html",stories = stories) #Include all info from database afterward to be displayed
 
 
 @app.route("/view")
@@ -87,14 +87,16 @@ def view():
 @app.route("/add")
 def add():
     #Accesses database to get most recent entry
-    #return render_template("add.html", storyTitle = , prevEntry = access_data.prev_add("storyTitle","id"))
-    return render_template("add.html", storyTitle = "Story Title", prevEntry = "________TEXT_________")
+    #sTitle = request.args['story']
+    #previousEntry = request.args['storyContent']
+    return render_template("add.html", storyTitle = sTitle, prevEntry = previousEntry)
 
 @app.route("/search", methods=["GET"])
 def searchresults():
     #takes info from search textbox
     #checks databases for related stories
     #stories = access_data.stories_of(request.args["input"]))
+    #return render_template("search.html", results = stories, storyLink = "/add?title=" + story + "&" + "content=" + storyContent)
     return render_template("search.html", results = stories)
 
 
