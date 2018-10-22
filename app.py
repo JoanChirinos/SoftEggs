@@ -107,12 +107,20 @@ def create():
 def createstory():  #adds to database
     #if story already exists
         #return redirect(url_for("create"))
+    if (request.args["storytitle"].strip(" ") == "" or
+        request.args["entry"].strip(" ") == "" or
+        request.args["tags"].strip(" ") == ""):
+        flash("Please Fill Out Everything")
+        return redirect(url_for("create"))
     access_data.create(request.args["storytitle"], request.args["entry"], request.args["tags"], access_data.get_id(session['username']))
     return redirect(url_for("home"))
 
 @app.route("/addStory", methods = ["GET"])
 def addStory():
     #add(request.args["storytitle"],request.args["entry"],request.args["tags"], session['username'])
+    if request.args["entry"].strip(" ") == "":
+        flash("Please Create an Entry")
+        return redirect(url_for("add"))
     return redirect(url_for("home"))
 
 if __name__ == "__main__":

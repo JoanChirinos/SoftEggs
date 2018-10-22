@@ -14,6 +14,10 @@ Create A Story
   <textarea rows = "10" columns="100" form="add" name="entry"></textarea><br>
   <input type = "submit" name = "Submit">
 </form>
+{% set msg = get_flashed_messages() %}
+{% for each in msg %}
+{{each}}
+{% endfor %}
 {% endblock %}
 
 {% block heading %}
