@@ -2,8 +2,10 @@
 
 {% block head %}
 <!--search bar and logout button here -->
+<h1> <a href="/home"> StoryTime! </a></h1>
 <form action="/search">
-  Search:<input type = "text"></form>
+  Search:<input type = "search" name="input">
+</form>
 <form action = "/logout">
   <input type = "submit" value = "logout"> <!--button for logging out -->
 </form>

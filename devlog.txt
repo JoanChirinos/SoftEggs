@@ -80,3 +80,51 @@ canaleB -- 2018-10-19 12:32
    (not yet written)
 2. Began refining html files
 ==============================================================
+
+gelfandD -- 2018-10-20 22:50
+--------------------------------------------------------------
+1. Wrote access_data file which currently handles access to
+one or all stories.
+==============================================================
+
+canaleB -- 2018-10-21 14:03
+--------------------------------------------------------------
+1. Fixed inheritance, adding headings, adjusting html files
+==============================================================
+
+canaleB -- 2018-10-21 14:20
+--------------------------------------------------------------
+1. Added heading with home link to every page
+2. Beginning to implement hardcoded functions that will be
+   used to access databases
+==============================================================
+
+gelfandD -- 2018-10-21 15:56
+--------------------------------------------------------------
+1. Added signup and login to access_data.py with Fabiha.
+2. Put discoeggs.db in data folder and access_data.py in util folder
+==============================================================
+
+fabihaT -- 2018-10-21 16:52
+--------------------------------------------------------------
+1. Fixed major bug in access_data.py.
+==============================================================
+
+canaleB -- 2018-10-21 18:22
+--------------------------------------------------------------
+1. Started on create.html, has all necessary fields and forms
+2. Started on createstory() in app.py, which will access/add
+   to databases & and make sure there are no repeat stories
+3. Added view_all() to home(), tested with hardcoded stories
+4. Added view functionality to home.html, previously edited
+   stories are now viewable in home.
+==============================================================
+
+chenD -- 2018-10-21 19:48
+--------------------------------------------------------------
+1. Created add.html and added placeholders for the title
+and previous entry
+2. Created addstory(), which will add the entry that the user
+submitted into the database
+3. Added tags to create.html
+==============================================================

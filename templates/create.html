@@ -1,16 +1,20 @@
-{% extends "base.html" %}
-
-{% block head %}
-<!--search bar and logout button here -->
-{% endblock %}
+{% extends "sitebase.html" %}
 
 {% block title %}
-<!-- title of the website -->
+Create A Story
 {% endblock %}
 
 {% block body %}
-<!-- textbox for tags, intro entry, and story title,
-also submit button -->
+<!-- tells user to input a title, an intro entry, and tags -->
+<form action = "/createstory" method = "GET" id = "create">
+  Title<br>
+  <input type = "text" name = "storytitle"> <br>
+  Entry<br>
+  <textarea rows = "10" columns="100" form="create" name="entry"></textarea><br>
+  Tags<br>
+  <input type="text" name = "tags"><br>
+  <input type = "submit" name = "Submit">
+</form>
 {% endblock %}
 
 {% block heading %}
