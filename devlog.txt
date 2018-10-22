@@ -127,4 +127,4 @@ and previous entry
 2. Created addstory(), which will add the entry that the user
 submitted into the database
 3. Added tags to create.html
-==============================================================
+=============================================================

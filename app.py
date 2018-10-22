@@ -86,15 +86,20 @@ def view():
 
 @app.route("/add")
 def add():
-    #Accesses database to get most recent entry
+    '''  CHECKS IF USER PREVIOUSLY ADDED, FLASHES ERROR MESSAGE AND REDIRECTS TO VIEW IF SO (we have to pass story to view)
+    if access_data.prev_add(n_story, session["username"]):
+        flash("You have already added to this story, you cannot add any more entries")
+        redirect(url_for("view"))
+    '''#Accesses database to get most recent entry
     #return render_template("add.html", storyTitle = "Story Title", prevEntry = access_data.prev_add("storyTitle","id"))
-    return render_template("add.html", storyTitle = "Story Title", prevEntry = "________TEXT_________")
+    return render_template("add.html", storyTitle = "Story Title", prevEntry = access_data.view_one("Story Title"))
 
 @app.route("/search", methods=["GET"])
 def searchresults():
     #takes info from search textbox
     #checks databases for related stories
-    return render_template("search.html", results = request.args["input"])
+    #results = access_data.stories_of(request.args["input"])
+    return render_template("search.html")#,  results = results)
 
 
 @app.route("/create")
