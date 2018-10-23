@@ -5,6 +5,12 @@ def sign_up(user, pwd):
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
 
+    command = "SELECT COUNT(*) FROM login WHERE username = \"{}\"".format(user)
+    c.execute(command)
+    rows = c.fetchone()
+    if(rows != None):
+        return False;
+
     #still have to make sure that we cannot create multiple of the same users
 
     #we gotta find out how many rows there are already
@@ -22,7 +28,8 @@ def sign_up(user, pwd):
 
     return True
 
-#sign_up("Scriptor","nah")
+#print(sign_up("Scriptor","nah"))
+#print(sign_up("Scriptor","nah"))
 
 def login(user,pwd):
     DB_FILE="data/discoeggs.db"
@@ -186,3 +193,52 @@ def prev_add(n_story,id):
     return False
 
 #prev_add("egg boss", 1)
+
+def stories_of(tag):
+    '''Gives the stories associated with the provided tag'''
+
+    DB_FILE= "data/discoeggs.db"
+    db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
+    c = db.cursor()
+
+    noSpaces = tag.replace(' ', '')
+    command = "SELECT story_name from tags where tag=\"{}\" ".format(noSpaces)
+    c.execute(command)
+
+    stories = c.fetchall()
+    db.commit()
+    db.close()
+
+    if (len(stories) == 0):
+        return ""
+    ret = []
+    for each in stories:
+        ret.append(each[0])
+
+    return ret
+#stories_of("egg")
+
+def add(n_story,content,id):
+    if(prev_add(n_story,id)):
+        return False
+
+    DB_FILE= "data/discoeggs.db"
+    db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
+    c = db.cursor()
+
+    command = "SELECT COUNT(story_name) FROM stories WHERE story_name=\"{}\"".format(n_story)
+    c.execute(command)
+    numTuple = c.fetchone()
+    if (len(numTuple) == None):
+        return False
+    num = numTuple[0]
+    #print(splitted)
+    # check to make sure story name doesnt exist yet
+    params = (n_story,content, num+1, id)
+    command = "INSERT INTO stories VALUES(?,?,?,?)"
+    c.execute(command,params)
+
+    db.commit()
+    db.close()
+    return True
+#print(add("egg boss", "He was so cool.", 19))
