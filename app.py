@@ -133,14 +133,27 @@ def add():
     If not, displays page with most recent entry of story and textbox for the user's new entry
     '''
     #if access_data.prev_add(n_story, session["username"]):
-        #flash("You have already added to this story, you cannot add any more entries")
-        #redirect(url_for("view"))
-    #Accesses database to get most recent entry
-    #return render_template("add.html", storyTitle = "Story Title", prevEntry = access_data.prev_add("storyTitle","id"))
-#sTitle = request.args["story"]
-    #previousEntry = request.args['storyContent']
-    return render_template("add.html", storyTitle = sTitle, prevEntry = previousEntry)
+    #    flash("You have already added to this story, you cannot add any more entries")
+    #    redirect(url_for("view"))
+    sTitle = " ".join(request.args["title"].split("_"))
+    previousEntry = " ".join(request.args['content'].split("_"))
+    return render_template("add.html", storyTitle = sTitle, prevEntry = previousEntry, addStoryLink = "/addStory?title=" + "_".join(sTitle.split(" ")))
 
+
+@app.route("/addStory", methods = ["GET","POST"])
+def addStory():
+    ''' Adds entry to the story
+
+    If the entry is empty, flashes an error
+    Title of story and content of your entry is passed into the database, then you're redirected to home
+    '''
+    if request.form["entry"].strip(" ") == "":
+        flash("Please Create an Entry")
+        return redirect(url_for("add"))
+    sTitle = " ".join(request.args['title'].split("_"))
+    sContent = request.form['entry']
+    access_data.add(sTitle,sContent,access_data.get_id(session['username']))
+    return redirect(url_for("home"))
 
 
 @app.route("/search", methods=["GET"])
@@ -151,12 +164,11 @@ def searchresults():
     '''
     #takes info from search textbox
     #checks databases for related stories
-    #storyLinks = []
-    #for story in stories:
-    #    storyLinks.append("/add?title=" + story + "&" + "content=" + view_one(story))
-    #return render_template("search.html", results = stories, links = storyLinks)
-    return render_template("search.html", results = stories)
-
+    storyLinks = dict()
+    stories = access_data.stories_of(request.args['input'])
+    for story in stories:
+        storyLinks[story] = ("/add?title=" + "_".join(story.split(" ")) + "&" + "content=" + "_".join(access_data.view_one(story).split(" ")))
+    return render_template("search.html", links = storyLinks)
 
 
 @app.route("/create")
@@ -183,17 +195,6 @@ def createstory():
         return redirect(url_for("create"))
     access_data.create(request.args["storytitle"], request.args["entry"], request.args["tags"], access_data.get_id(session['username']))
     return redirect(url_for("home"))
-
-
-
-@app.route("/addStory", methods = ["GET"])
-def addStory():
-    #add(request.args["storytitle"],request.args["entry"],request.args["tags"], session['username'])
-    if request.args["entry"].strip(" ") == "":
-        flash("Please Create an Entry")
-        return redirect(url_for("add"))
-    return redirect(url_for("home"))
-
 
 
 if __name__ == "__main__":

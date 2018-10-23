@@ -6,7 +6,8 @@ Create A Story
 
 {% block body %}
 <!-- displays story title, prev entry and puts your entry into the db -->
-<form action = "/addStory" method = "GET" id = "add">
+<!--link of query string with title, entry will be received from form -->
+<form action = {{addStoryLink}} method = "POST" id = "add">
   <h2>{{storyTitle}}<br></h2>
   Previous Entry:<br>
   &emsp;&emsp;&emsp;{{prevEntry}}<br>
