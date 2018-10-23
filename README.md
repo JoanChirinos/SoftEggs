@@ -1,5 +1,4 @@
 # SoftEggs
----
 ## Daniel Gelfand, Britni Canale, Tabassum Fabiha, Dennis Chen 
 <b> How STORYTIME works </b><br>
 STORYTIME is an interactive website where users can view, add to, and create new stories. In order to use STORYTIME, each user will be required to sign in or register. Users will be able to create any story, add to any story they haven't previously edited, and view any story they have previously edited.<br><br>
