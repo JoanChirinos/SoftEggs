@@ -98,8 +98,8 @@ def add():
 def searchresults():
     #takes info from search textbox
     #checks databases for related stories
-    #results = access_data.stories_of(request.args["input"])
-    return render_template("search.html")#,  results = results)
+    #stories = access_data.stories_of(request.args["input"]))
+    return render_template("search.html", results = stories)
 
 
 @app.route("/create")
