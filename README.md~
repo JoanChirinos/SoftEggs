@@ -1,7 +1,7 @@
 # SoftEggs
 <b> How STORYTIME works </b><br>
 STORYTIME is an interactive website where users can view, add to, and create new stories. In order to use STORYTIME, each user will be required to sign in or register. Users will be able to create any story, add to any story they haven't previously edited, and view any story they have previously edited.<br><br>
-<b> How to use STORYTIME </b><br>
+<b> How to use STORYTIME </b>
 <b>Logging in:</b> To use STORYTIME, each user will be prompted to first login to the website. If they do not have an account, they will have the option to register for an account, and then will be prompted to log in after registering. If the user is already logged in and opens STORYTIME they will be immediately taken to the home page.<br>
 <b>Viewing stories:</b> On the home page, stories that the user has previously added to or created will be visible with all entries that were added prior to and after the user's entry. Stories that were previously edited by a user cannot be added to again by that user.<br>
 <b>Creating stories:</b> On the home page, there will be a button labeled "Create" that will take the user to a page where they can create a story. They can input a title and an entry to that story. If a story already exists with the title they input, they will be asked to choose a new title. After clicking the submit button, they will be taken back to the home page, where the new story will be visible along with any other stories the user has created or added to.<br>

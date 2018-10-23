@@ -75,7 +75,7 @@ def logout():
 @app.route("/home") #MUST ADD METHODS, THIS WILL BE USER BASED
 def home():
     stories = access_data.view_all(access_data.get_id(session["username"]))
-    return render_template("home.html", stories = stories) #Include all info from database afterward to be displayed
+    return render_template("home.html",stories = stories) #Include all info from database afterward to be displayed
 
 
 @app.route("/view")
@@ -99,6 +99,7 @@ def searchresults():
     #takes info from search textbox
     #checks databases for related stories
     #stories = access_data.stories_of(request.args["input"]))
+    #return render_template("search.html", results = stories, storyLink = "/add?title=" + story + "&" + "content=" + storyContent)
     return render_template("search.html", results = stories)
 
 
@@ -111,12 +112,20 @@ def create():
 def createstory():  #adds to database
     #if story already exists
         #return redirect(url_for("create"))
+    if (request.args["storytitle"].strip(" ") == "" or
+        request.args["entry"].strip(" ") == "" or
+        request.args["tags"].strip(" ") == ""):
+        flash("Please Fill Out Everything")
+        return redirect(url_for("create"))
     access_data.create(request.args["storytitle"], request.args["entry"], request.args["tags"], access_data.get_id(session['username']))
     return redirect(url_for("home"))
 
 @app.route("/addStory", methods = ["GET"])
 def addStory():
     #add(request.args["storytitle"],request.args["entry"],request.args["tags"], session['username'])
+    if request.args["entry"].strip(" ") == "":
+        flash("Please Create an Entry")
+        return redirect(url_for("add"))
     return redirect(url_for("home"))
 
 if __name__ == "__main__":

@@ -15,6 +15,10 @@ Create A Story
   <input type="text" name = "tags"><br>
   <input type = "submit" name = "Submit">
 </form>
+{% set msg = get_flashed_messages() %}
+{% for each in msg %}
+{{each}}
+{% endfor %}
 {% endblock %}
 
 {% block heading %}
