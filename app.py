@@ -151,8 +151,10 @@ def searchresults():
     '''
     #takes info from search textbox
     #checks databases for related stories
-    #stories = access_data.stories_of(request.args["input"]))
-    #return render_template("search.html", results = stories, storyLink = "/add?title=" + story + "&" + "content=" + storyContent)
+    #storyLinks = []
+    #for story in stories:
+    #    storyLinks.append("/add?title=" + story + "&" + "content=" + view_one(story))
+    #return render_template("search.html", results = stories, links = storyLinks)
     return render_template("search.html", results = stories)
 
 
@@ -169,7 +171,7 @@ def create():
 def createstory():
     '''Adds input story to databases
 
-    
+
     '''
      #adds to database
     #if story already exists
