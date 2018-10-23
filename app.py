@@ -27,16 +27,16 @@ def login():
     If user is logged in, redirects to /home
     If user is not logged in, opens login.html
     '''
-    if "username" in session:                   #Checks if user is previously signed in
-        return redirect(url_for("home"))        #If user logged in previously, goes directly home
-    return render_template("login.html")        #If not logged in, prompts user to login
+    if "username" in session:
+        return redirect(url_for("home"))
+    return render_template("login.html")
 
 
 
 @app.route("/register")
 def register():
     '''Displays page allowing users without accounts to register'''
-    return render_template("register.html")     #Displays page allowing user to register
+    return render_template("register.html")
 
 
 
@@ -50,23 +50,18 @@ def authRegister():
 
     If all tests passed, user information is added to database and user is redirected to login
     '''
-    #checks if username is too short
     if request.form['username'].strip(" ") == "" or len(request.form['username'].strip(" ")) < 4:
-        #if so, flash an error
         flash("Username is too short")
-        return redirect(url_for("register"))  #redirects to register
-    #checks if a password exists
+        return redirect(url_for("register"))
     elif request.form['password'].strip(" ") == "":
         flash("No password input")
-        return redirect(url_for("register"))  #redirects to register
-    #checks if passwords are the same in both boxes
+        return redirect(url_for("register"))
     elif request.form['password'] != request.form['confirmpw']:
-        #if not, flash an error
         flash("Passwords do not match")
-        return redirect(url_for("register"))  #redirects to register
+        return redirect(url_for("register"))
     else:
         access_data.sign_up(request.form['username'].strip(" "), request.form['password'])
-        return redirect(url_for("login"))     #redirects to login after successful register
+        return redirect(url_for("login"))
 
 
 
@@ -79,12 +74,9 @@ def authorize():
     If so, redirects to home
     '''
     if access_data.login(request.form["username"], request.form["password"]):
-    #if request.form['username'] == "dennis" and request.form['password'] == 'abc':
-        #put user in session, go to home page
         session['username'] = request.form['username']
         return redirect(url_for("home"))
     else:
-        #otherwise flash error and go back to login
         flash("Incorrect Login Information")
         return redirect(url_for("login"))
 
@@ -111,7 +103,7 @@ def home():
     displays those stories in full on home page.
     '''
     stories = access_data.view_all(access_data.get_id(session["username"]))
-    return render_template("home.html",stories = stories) #Include all info from database afterward to be displayed
+    return render_template("home.html",stories = stories)
 
 
 
@@ -121,7 +113,7 @@ def view():
 
     Allows user to view individual story (previously edited) on a single page
     '''
-    return render_template("view.html") #include info from database afterwward to be displayed
+    return render_template("view.html") #include info from database afterward to be displayed
 
 
 
@@ -138,6 +130,7 @@ def add():
     sTitle = " ".join(request.args["title"].split("_"))
     previousEntry = " ".join(request.args['content'].split("_"))
     return render_template("add.html", storyTitle = sTitle, prevEntry = previousEntry, addStoryLink = "/addStory?title=" + "_".join(sTitle.split(" ")))
+
 
 
 @app.route("/addStory", methods = ["GET","POST"])
@@ -162,8 +155,6 @@ def searchresults():
 
     Compares input with tags and titles in databases and displays links to those that match
     '''
-    #takes info from search textbox
-    #checks databases for related stories
     storyLinks = dict()
     stories = access_data.stories_of(request.args['input'])
     for story in stories:
@@ -171,10 +162,10 @@ def searchresults():
     return render_template("search.html", links = storyLinks)
 
 
+
 @app.route("/create")
 def create():
     '''Opens page allowing user to create new story'''
-    #Adds new story to database
     return render_template("create.html")
 
 
@@ -183,11 +174,12 @@ def create():
 def createstory():
     '''Adds input story to databases
 
-
+    Checks if everything has an input value:
+    If not, flashes error and redirects to /create
+    If so, checks if input story has same title as existing story:
+    If it matches existing story, flashes error and redirects to /create
+    If it meets requirements, story is added to database and user is redirected to /home
     '''
-     #adds to database
-    #if story already exists
-        #return redirect(url_for("create"))
     if (request.args["storytitle"].strip(" ") == "" or
         request.args["entry"].strip(" ") == "" or
         request.args["tags"].strip(" ") == ""):
