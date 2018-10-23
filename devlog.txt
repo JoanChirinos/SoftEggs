@@ -153,3 +153,9 @@ chenD -- 2018-10-23 17:54
 add to the story yet, but gives no errors when the entry is
 submitted.
 ==============================================================
+
+gelfandD -- 2018-10-23 12:35
+--------------------------------------------------------------
+1. Sign up method checks for duplicates.
+2. Created the ability to add to existing stories.
+==============================================================
