@@ -15,13 +15,12 @@ app.secret_key = os.urandom(32)
 
 @app.route("/")
 def hello_world():
-    '''Function for root route, immediately reroutes to /login'''
-    return redirect(url_for("login"))
+    '''returns stuff'''
+    return redirect(url_for("login"))           #Automatically reroutes to login (user must login)
 
 
 @app.route("/login")
 def login():
-    '''Function for '''
     if "username" in session:                   #Checks if user is previously signed in
         return render_template("home.html")     #If user logged in previously, goes directly home
     return render_template("login.html")        #If not logged in, prompts user to login
@@ -88,14 +87,8 @@ def view():
 
 @app.route("/add")
 def add():
-    '''  CHECKS IF USER PREVIOUSLY ADDED, FLASHES ERROR MESSAGE AND REDIRECTS TO VIEW IF SO (we have to pass story to view)
-    if access_data.prev_add(n_story, session["username"]):
-        flash("You have already added to this story, you cannot add any more entries")
-        redirect(url_for("view"))
-    '''
     #Accesses database to get most recent entry
-    #return render_template("add.html", storyTitle = "Story Title", prevEntry = access_data.prev_add("storyTitle","id"))
-#sTitle = request.args["story"]
+    #sTitle = request.args['story']
     #previousEntry = request.args['storyContent']
     return render_template("add.html", storyTitle = sTitle, prevEntry = previousEntry)
 
