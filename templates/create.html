@@ -4,8 +4,9 @@
 Create A Story
 {% endblock %}
 
-{% block body %}
+
 <!-- tells user to input a title, an intro entry, and tags -->
+{% block body %}
 <form action = "/createstory" method = "GET" id = "create">
   Title<br>
   <input type = "text" name = "storytitle"> <br>
@@ -19,8 +20,4 @@ Create A Story
 {% for each in msg %}
 {{each}}
 {% endfor %}
-{% endblock %}
-
-{% block heading %}
-<!-- empty unless something needs to be emphasized -->
 {% endblock %}

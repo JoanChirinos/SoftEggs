@@ -1,12 +1,14 @@
 {% extends "sitebase.html" %}
 
+
 {% block title %}
 Create A Story
 {% endblock %}
 
-{% block body %}
+
 <!-- displays story title, prev entry and puts your entry into the db -->
 <!--link of query string with title, entry will be received from form -->
+{% block body %}
 <form action = {{addStoryLink}} method = "POST" id = "add">
   <h2>{{storyTitle}}<br></h2>
   Previous Entry:<br>
@@ -19,8 +21,4 @@ Create A Story
 {% for each in msg %}
 {{each}}
 {% endfor %}
-{% endblock %}
-
-{% block heading %}
-<!-- empty unless something needs to be emphasized -->
 {% endblock %}

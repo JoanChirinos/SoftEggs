@@ -1,18 +1,19 @@
 {% extends "base.html" %}
 
+
 {% block head %}
-<!-- heading -->
 <h1> Register </h1>
 {% endblock %}
 
+
 {% block title %}
-<!-- title of the website -->
 Register
 {% endblock %}
 
+
+<!-- username, pw, and confirm pw boxes and register button-->
 {% block body %}
 Username must be 4 characters or more<br><br>
-<!-- username, pw, and confirm pw boxes and register button-->
 <form action = "/authR" method = "POST">
   Username : <input type = "type" name = "username"> <br>
   Password : <input type = "password" name = "password"><br>
@@ -26,8 +27,4 @@ Username must be 4 characters or more<br><br>
 <br>
 <!-- link to login -->
 <a href = "/login"> Back to Login </a>
-{% endblock %}
-
-{% block heading %}
-<!-- most likely empty -->
 {% endblock %}

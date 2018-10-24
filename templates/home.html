@@ -1,9 +1,12 @@
 {% extends "sitebase.html" %}
 
+
 {% block title %}
 Home
 {% endblock %}
 
+
+<!--shows the whole story for the ones you edited -->
 {% block body %}
 {%for story in stories %}
 <b>{{story}}</b><br>
@@ -14,9 +17,4 @@ Home
 {%endfor%}
 <h1><a href = "/create"> Create a Story </a></h1>
 <hr>
-<!--shows the whole story for the ones you edited -->
-{% endblock %}
-
-{% block heading %}
-<!-- probably empty unless story title here -->
 {% endblock %}

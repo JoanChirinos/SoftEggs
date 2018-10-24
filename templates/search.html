@@ -4,15 +4,12 @@
 Search Results
 {% endblock %}
 
-{% block body %}
+
 <!--iterates through links of search results and gives a query string w/ the
 title and content of the link you click-->
+{% block body %}
 {% for story in links %}
   <a href = {{links[story]}}><h2> {{story}} </h2></a>
   <hr>
 {% endfor %}
-{% endblock %}
-
-{% block heading %}
-<!-- empty unless we make story titles headings -->
 {% endblock %}

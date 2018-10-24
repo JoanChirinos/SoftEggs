@@ -1,23 +1,23 @@
 {% extends "base.html" %}
 
+
 {% block head %}
-<!-- heading -->
 <h1> Login </h1>
 {% endblock %}
 
+
 {% block title %}
-<!-- title of the website -->
 Login
 {% endblock %}
 
-{% block body %}
+
  <!-- username and password input box w/ submit button -->
+{% block body %}
  <form action = "/auth" method = "POST">
    Username : <input type = "type" name = "username"> <br>
    Password : <input type = "password" name = "password">
    <input type = "submit" name = "Login">
  </form>
- <!-- message saying wrong login info flashes if wrong username or pw entered-->
  {% set msg = get_flashed_messages() %}
  {% for each in msg %}
  {{each}}
@@ -25,8 +25,4 @@ Login
  <br>
  <!-- link to register -->
  <a href = "/register"> Not Registered Yet? </a>
-{% endblock %}
-
-{% block heading %}
-<!--empty!-->
 {% endblock %}
