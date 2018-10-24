@@ -124,9 +124,9 @@ def add():
     Checks if user previously added, redirects to view and flashes error if so
     If not, displays page with most recent entry of story and textbox for the user's new entry
     '''
-    #if access_data.prev_add(n_story, session["username"]):
-    #    flash("You have already added to this story, you cannot add any more entries")
-    #    redirect(url_for("view"))
+    if access_data.prev_add(n_story, session["username"]):
+        flash("You have already added to this story, you cannot add any more entries")
+        redirect(url_for("home"))
     sTitle = " ".join(request.args["title"].split("_"))
     previousEntry = " ".join(request.args['content'].split("_"))
     return render_template("add.html", storyTitle = sTitle, prevEntry = previousEntry, addStoryLink = "/addStory?title=" + "_".join(sTitle.split(" ")))
