@@ -5,20 +5,24 @@
 Home
 {% endblock %}
 
+<!--if you already added to a story, flash an error -->
+{% block head %}
+{{super()}}<br>
+<b>{% set msg = get_flashed_messages() %}
+{% for each in msg %}
+  {{each}}
+{% endfor %}</b>
+<hr>
+{% endblock %}
 
 <!--shows the whole story for the ones you edited -->
 {% block body %}
-{%for story in stories %}
+{% for story in stories %}
 <b>{{story}}</b><br>
 {%for entry in stories[story]%}
 {{entry}}<br>
 {%endfor%}
-<br>
-<b>{% set msg = get_flashed_messages() %}
-{% for each in msg %}
-{{each}}
-{% endfor %}</b>
-<hr>
+<br><hr>
 {%endfor%}
 <h1><a href = "/create"> Create a Story </a></h1>
 <hr>

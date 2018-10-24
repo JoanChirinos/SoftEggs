@@ -138,10 +138,11 @@ def add():
     '''
     sTitle = " ".join(request.args["title"].split("_"))
     if access_data.prev_add(sTitle, access_data.get_id(session["username"])):
-        flash("You have already added to this story, you cannot add any more entries")
+        flash("You have already added to that story, you cannot add any more entries")
         return redirect(url_for("home"))
     previousEntry = " ".join(request.args['content'].split("_"))
-    return render_template("add.html", storyTitle = sTitle, prevEntry = previousEntry, addStoryLink = "/addStory?title=" + "_".join(sTitle.split(" ")))
+    title = request.args['title']
+    return render_template("add.html", storyTitle = sTitle, prevEntry = previousEntry, storTitle = title)
 
 
 
@@ -173,7 +174,7 @@ def searchresults():
         title = "_".join(story.split(" "))
         content = "_".join(access_data.view_one(story).split(" "))
         storyStuff[title] = content
-    return render_template("search.html", links = storyStuff)
+    return render_template("search.html", storyStuff = storyStuff)
 
 
 

@@ -175,3 +175,12 @@ fabihaT -- 2018-10-24 17:43
 --------------------------------------------------------------
 1. Fixed bug around unaccessable database.
 ==============================================================
+
+chenD -- 2018-10-24 18:50
+--------------------------------------------------------------
+1. Made the search and add query strings with jinja look nicer
+2. Made it so that an error displayed if you already added to
+the story
+3. Created template in app.py for viewAllS() that would lead
+to a link with the links of all the stories
+==============================================================
