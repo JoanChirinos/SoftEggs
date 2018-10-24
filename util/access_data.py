@@ -64,14 +64,13 @@ def sign_up(user, pwd):
 
     return True
 
-#print(sign_up("Potatoman","potato"))
-#print(sign_up("Scriptor","nah"))
+#print(sign_up("Potatoma","potato"))
+#print(sign_up("Scripto","nah"))
 
 def login(user,pwd):
     '''login returns True if the username and password provided match. Otherwise, returns False.'''
 
     createDatabase()
-
 
     DB_FILE="data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
@@ -94,15 +93,14 @@ def login(user,pwd):
     return True
 
 '''
-login('bob', 'bobby')
-print(login('bobby','bobbster')) #False
+#login('bob', 'bobby')
+print(login('Potatoman','potato')) #False
 print(login('bobby','bobster')) #True
 '''
 def view_one(story):
     '''Given a story, this method accesses and returns the latest paragraph from that story'''
 
     createDatabase()
-
 
     DB_FILE="data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
@@ -128,7 +126,6 @@ def view_all(id):
     '''Accesses the contents of the stories the user has added to.'''
 
     createDatabase()
-
 
     DB_FILE="data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
