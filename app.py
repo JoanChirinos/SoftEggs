@@ -119,9 +119,9 @@ def view():
     '''
     return render_template("view.html") #include info from database afterward to be displayed
 
-@app.route("allstories")
-def viewAllS():
-    storyLinks = dict()
+#@app.route("allstories")
+#def viewAllS():
+#    storyLinks = dict()
     #stories = access_data.get_all_stories()
     #for story in stories:
     #    storyLinks[story] = ("/add?title=" + "_".join(story.split(" ")) + "&" + "content=" + "_".join(access_data.view_one(story).split(" ")))
