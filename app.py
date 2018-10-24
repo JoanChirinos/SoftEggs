@@ -20,6 +20,8 @@ def hello_world():
 
 
 
+#=================================AUTHORIZE=====================================
+
 @app.route("/login")
 def login():
     '''Function for /login, checks if user is already logged in
@@ -95,6 +97,8 @@ def logout():
 
 
 
+#===================================VIEW========================================
+
 @app.route("/home")
 def home():
     '''Displays home page for specific user
@@ -116,6 +120,8 @@ def view():
     return render_template("view.html") #include info from database afterward to be displayed
 
 
+
+#=================================ADD ENTRY=====================================
 
 @app.route("/add")
 def add():
@@ -163,6 +169,8 @@ def searchresults():
 
 
 
+#================================CREATE STORY===================================
+
 @app.route("/create")
 def create():
     '''Opens page allowing user to create new story'''
@@ -188,6 +196,9 @@ def createstory():
     access_data.create(request.args["storytitle"], request.args["entry"], request.args["tags"], access_data.get_id(session['username']))
     return redirect(url_for("home"))
 
+
+
+#====================================RUN========================================
 
 if __name__ == "__main__":
     app.debug = True
