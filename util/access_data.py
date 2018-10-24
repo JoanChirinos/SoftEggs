@@ -2,8 +2,31 @@ import sqlite3
 
 '''The code below is used to access data from the database based on the user's needs'''
 
+def createDatabase():
+    ''' Creates a database if user decided to delete the database '''
+
+
+    DB_FILE="data/discoeggs.db"
+    db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
+    c = db.cursor()
+
+    command = "CREATE TABLE IF NOT EXISTS login(username TEXT, password TEXT, editor_id INTEGER PRIMARY KEY)"
+    c.execute(command)
+
+    command = "CREATE TABLE IF NOT EXISTS stories(story_name TEXT, content TEXT, entry_num INTEGER, editor_id INTEGER)"
+    c.execute(command)
+
+    command = "CREATE TABLE IF NOT EXISTS tags(story_name TEXT, tag TEXT)"
+    c.execute(command)
+
+    db.commit()
+    db.close()
+
+
 def sign_up(user, pwd):
     '''sign_up adds a usernam and its associated password if the user does not exist yet'''
+
+    createDatabase()
 
     DB_FILE="data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
@@ -39,6 +62,9 @@ def sign_up(user, pwd):
 def login(user,pwd):
     '''login returns True if the username and password provided match. Otherwise, returns False.'''
 
+    createDatabase()
+
+
     DB_FILE="data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
@@ -67,6 +93,9 @@ print(login('bobby','bobster')) #True
 def view_one(story):
     '''Given a story, this method accesses and returns the latest paragraph from that story'''
 
+    createDatabase()
+
+
     DB_FILE="data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
@@ -89,6 +118,9 @@ def view_one(story):
 
 def view_all(id):
     '''Accesses the contents of the stories the user has added to.'''
+
+    createDatabase()
+
 
     DB_FILE="data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
@@ -133,6 +165,8 @@ def view_all(id):
 def get_id(user):
     '''Returns the associated editor_id with a username'''
 
+    createDatabase()
+
     DB_FILE="data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
@@ -151,6 +185,8 @@ def get_id(user):
 def create(n_story, content, tags, id):
     '''Creates a new story in the database with given content.
     Tags are provided to be later used for searching for stories'''
+
+    createDatabase()
 
     DB_FILE= "data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
@@ -197,6 +233,8 @@ def prev_add(n_story,id):
     '''Checks if an editor has previously added to a story.
        Return True if the editor has added before, False otherwise'''
 
+    createDatabase()
+
     DB_FILE= "data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
@@ -219,6 +257,8 @@ def prev_add(n_story,id):
 
 def stories_of(tag):
     '''Returns the stories associated with the provided tag'''
+
+    createDatabase()
 
     DB_FILE= "data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
@@ -245,6 +285,8 @@ def add(n_story,content,id):
     '''Adds a new paragraph to a story in the database
         id is used to view which user made the edit
     '''
+
+    createDatabase()
 
     #Check if editor has added to this story before
     if(prev_add(n_story,id)):
