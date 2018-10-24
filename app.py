@@ -168,13 +168,15 @@ def searchresults():
 
     Compares input with tags and titles in databases and displays links to those that match
     '''
+    def ridOfUScore(uScoreTitle):
+        return " ".join(uScoreTitle.split("_"))
     storyStuff = dict()
     stories = access_data.stories_of(request.args['input'])
     for story in stories:
         title = "_".join(story.split(" "))
         content = "_".join(access_data.view_one(story).split(" "))
         storyStuff[title] = content
-    return render_template("search.html", storyStuff = storyStuff)
+    return render_template("search.html", storyStuff = storyStuff, spaceJoin = ridOfUScore)
 
 
 

@@ -9,7 +9,7 @@ Search Results
 title and content of the link you click-->
 {% block body %}
 {% for story in storyStuff %}
-  <a href = "/add?title={{story}}&content={{storyStuff[story]}}"><h2> {{story}} </h2></a>
+  <a href = "/add?title={{story}}&content={{storyStuff[story]}}"><h2> {{spaceJoin(story)}} </h2></a>
   <hr>
 {% endfor %}
 {% endblock %}
