@@ -119,7 +119,13 @@ def view():
     '''
     return render_template("view.html") #include info from database afterward to be displayed
 
-
+@app.route("allstories")
+def viewAllS():
+    storyLinks = dict()
+    #stories = access_data.get_all_stories()
+    #for story in stories:
+    #    storyLinks[story] = ("/add?title=" + "_".join(story.split(" ")) + "&" + "content=" + "_".join(access_data.view_one(story).split(" ")))
+    #return render_template("allstories.html", links = )
 
 #=================================ADD ENTRY=====================================
 
@@ -161,11 +167,13 @@ def searchresults():
 
     Compares input with tags and titles in databases and displays links to those that match
     '''
-    storyLinks = dict()
+    storyStuff = dict()
     stories = access_data.stories_of(request.args['input'])
     for story in stories:
-        storyLinks[story] = ("/add?title=" + "_".join(story.split(" ")) + "&" + "content=" + "_".join(access_data.view_one(story).split(" ")))
-    return render_template("search.html", links = storyLinks)
+        title = "_".join(story.split(" "))
+        content = "_".join(access_data.view_one(story).split(" "))
+        storyStuff[title] = content
+    return render_template("search.html", links = storyStuff)
 
 
 

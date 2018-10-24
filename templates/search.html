@@ -8,8 +8,8 @@ Search Results
 <!--iterates through links of search results and gives a query string w/ the
 title and content of the link you click-->
 {% block body %}
-{% for story in links %}
-  <a href = {{links[story]}}><h2> {{story}} </h2></a>
+{% for story in storyStuff %}
+  <a href = "/add?title={{story}}%content={{storyStuff[story]}}"><h2> {{story}} </h2></a>
   <hr>
 {% endfor %}
 {% endblock %}

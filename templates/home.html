@@ -13,7 +13,12 @@ Home
 {%for entry in stories[story]%}
 {{entry}}<br>
 {%endfor%}
-<br><hr>
+<br>
+<b>{% set msg = get_flashed_messages() %}
+{% for each in msg %}
+{{each}}
+{% endfor %}</b>
+<hr>
 {%endfor%}
 <h1><a href = "/create"> Create a Story </a></h1>
 <hr>
