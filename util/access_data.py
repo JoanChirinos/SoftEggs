@@ -20,7 +20,8 @@ def sign_up(user, pwd):
     command = "SELECT COUNT(*) FROM login WHERE username = \"{}\"".format(user)
     c.execute(command)
     rows = c.fetchone()
-    if(rows != None):
+    if(rows[0] != 0):
+        #print(rows[0])
         return False;
 
     #still have to make sure that we cannot create multiple of the same users
@@ -40,7 +41,7 @@ def sign_up(user, pwd):
 
     return True
 
-#print(sign_up("Scriptor","nah"))
+#print(sign_up("Potatoman","potato"))
 #print(sign_up("Scriptor","nah"))
 
 def login(user,pwd):
