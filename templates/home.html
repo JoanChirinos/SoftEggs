@@ -8,11 +8,11 @@ Home
 <!--if you already added to a story, flash an error -->
 {% block head %}
 {{super()}}<br>
-<b>{% set msg = get_flashed_messages() %}
+<font color="red"><b>{% set msg = get_flashed_messages() %}
 {% for each in msg %}
   {{each}}
-{% endfor %}</b>
-<hr>
+  <br><br>
+{% endfor %}</b></font>
 {% endblock %}
 
 <!--shows the whole story for the ones you edited -->
@@ -24,6 +24,4 @@ Home
 {%endfor%}
 <br><hr>
 {%endfor%}
-<h1><a href = "/create"> Create a Story </a></h1>
-<hr>
 {% endblock %}
