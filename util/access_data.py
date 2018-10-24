@@ -1,10 +1,18 @@
+#SoftEggs
+#Britni Canale
+#Dennis Chen
+#T. Fabiha
+#Daniel Gelfand
+#pd06
+
+
 import sqlite3
 
 '''The code below is used to access data from the database based on the user's needs'''
 
 def sign_up(user, pwd):
     '''sign_up adds a usernam and its associated password if the user does not exist yet'''
-    
+
     DB_FILE="data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
@@ -37,7 +45,7 @@ def sign_up(user, pwd):
 
 def login(user,pwd):
     '''login returns True if the username and password provided match. Otherwise, returns False.'''
-    
+
     DB_FILE="data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
@@ -51,7 +59,7 @@ def login(user,pwd):
     db.close()  #close database
 
     #print(password);
-    
+
     #If no password for that user or the password does not match the inputted password
     if password == None or password[0] != pwd:
         return False
@@ -65,7 +73,7 @@ print(login('bobby','bobster')) #True
 '''
 def view_one(story):
     '''Given a story, this method accesses and returns the latest paragraph from that story'''
-    
+
     DB_FILE="data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
@@ -79,7 +87,7 @@ def view_one(story):
 
     #Get last element in array and then last elemtnt in the list that lies inside the array
     #print(contents[-1][-1])
-    
+
     #Get latest content for given story
     return (contents[-1][-1])
 
@@ -88,7 +96,7 @@ def view_one(story):
 
 def view_all(id):
     '''Accesses the contents of the stories the user has added to.'''
-    
+
     DB_FILE="data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
@@ -106,18 +114,18 @@ def view_all(id):
             #print(each[0])
             #Using each[0] bc each is a tuple
         #Selects the content of the story with the same story name that each[0] holds
-        
+
         command = "SELECT content FROM stories WHERE story_name = \'{}\'".format(story[0])
         c.execute(command)
         #Refers to content with tuple and list outside
         uneditedContent = c.fetchall()
 
         content = []
-        
+
         for each in uneditedContent:
             content.append(each[0])
 
-        
+
         ret[story[0]] = content #creates a new key for a story with all its content
 
     db.commit() #save changes
@@ -131,7 +139,7 @@ def view_all(id):
 
 def get_id(user):
     '''Returns the associated editor_id with a username'''
-    
+
     DB_FILE="data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
@@ -150,7 +158,7 @@ def get_id(user):
 def create(n_story, content, tags, id):
     '''Creates a new story in the database with given content.
     Tags are provided to be later used for searching for stories'''
-    
+
     DB_FILE= "data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
@@ -195,7 +203,7 @@ def create(n_story, content, tags, id):
 def prev_add(n_story,id):
     '''Checks if an editor has previously added to a story.
        Return True if the editor has added before, False otherwise'''
-    
+
     DB_FILE= "data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
@@ -244,7 +252,7 @@ def add(n_story,content,id):
     '''Adds a new paragraph to a story in the database
         id is used to view which user made the edit
     '''
-    
+
     #Check if editor has added to this story before
     if(prev_add(n_story,id)):
         #don't let editor add again
@@ -257,14 +265,14 @@ def add(n_story,content,id):
     command = "SELECT COUNT(story_name) FROM stories WHERE story_name=\"{}\"".format(n_story)
     c.execute(command)
     numTuple = c.fetchone()
-    
+
     #Check if such story exists
     if (len(numTuple) == None):
         return False
     #Extract the number from the tuple
     num = numTuple[0]
     #print(splitted)
-    
+
     params = (n_story,content, num+1, id)
     command = "INSERT INTO stories VALUES(?,?,?,?)"
     c.execute(command,params)
