@@ -1,10 +1,10 @@
 # SoftEggs
 ## Daniel Gelfand, Britni Canale, Tabassum Fabiha, Dennis Chen
 <b> How to install and run STORYTIME</b><br>
-0. Ensure you have a virtual environment installed and activated before you run STORYTIME. Also make sure you have flask installed within your virtual environment. To learn how to set up a virtual environment, click <a href="https://stackoverflow.com/questions/41972261/what-is-a-virtualenv-and-why-should-i-use-one"> here</a>. To activate your virtual environment, first cd into the directory where your venv is located. Next, enter the command "source bin/activate" into your terminal command line. To install flask, use the command "pip install flask."
-1. To run STORYTIME, cd into SoftEggs, the directory containing the application. Enter the command "python app.py" which will run STORYTIME on the machine's local IP address. This address will be available as a link in the terminal, or you can manually type it in as http://127.0.0.1:5000/.
-2. For instructions on how to use the different features of the application, read "How to use STORYTIME" below.
-3. To quit, press CTRL+C<br><br>
+0) Ensure you have a virtual environment installed and activated before you run STORYTIME. Also make sure you have flask installed within your virtual environment. To learn how to set up a virtual environment, click <a href="https://stackoverflow.com/questions/41972261/what-is-a-virtualenv-and-why-should-i-use-one"> here</a>. To activate your virtual environment, first cd into the directory where your venv is located. Next, enter the command "source bin/activate" into your terminal command line. To install flask, use the command "pip install flask."
+1) To run STORYTIME, cd into SoftEggs, the directory containing the application. Enter the command "python app.py" which will run STORYTIME on the machine's local IP address. This address will be available as a link in the terminal, or you can manually type it in as http://127.0.0.1:5000/.
+2) For instructions on how to use the different features of the application, read "How to use STORYTIME" below.
+3) To quit, press CTRL+C<br><br>
 
 <b> How STORYTIME works </b><br>
 STORYTIME is an interactive website where users can view, add to, and create new stories. In order to use STORYTIME, each user will be required to sign in or register. Users will be able to create any story, add to any story they haven't previously edited, and view any story they have previously edited.<br><br>
