@@ -1,3 +1,11 @@
+#SoftEggs
+#Britni Canale
+#Dennis Chen
+#T. Fabiha
+#Daniel Gelfand
+#pd06
+
+
 import sqlite3
 
 '''The code below is used to access data from the database based on the user's needs'''
