@@ -347,14 +347,14 @@ def all_stories():
 
 #print(all_stories())
 
-def all_tags():
+def all_tags(single):
     createDatabase()
 
-    DB_FILE= "data/discoeggs.db"
+    DB_FILE= "../data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
 
-    command = "SELECT tag from tags"
+    command = "SELECT tag FROM tags WHERE story_name=\'{}\'".format(single)
     c.execute(command)
 
     stags = c.fetchall()
@@ -370,4 +370,5 @@ def all_tags():
 
     return ret
 
-#print(all_tags())
+#print(all_tags("egg boss"))
+#print(all_tags("pie"))
