@@ -116,6 +116,7 @@ def home():
     storytags = {}
     for story in stories:
         storytags[story] = access_data.all_tags(story)
+        print(storytags[story])
     return render_template("home.html",stories = stories, storytags= storytags)
 
 
@@ -135,7 +136,12 @@ def viewAllS():
     stories = access_data.all_stories()
     for story in stories:
         storyLinks[story] = ("/add?title=" + "_".join(story.split(" ")) + "&" + "content=" + "_".join(access_data.view_one(story).split(" ")))
-    return render_template("allstories.html", links = storyLinks)
+    storytags = dict()
+    for story in stories:
+        print(story)
+        storytags[story] = access_data.all_tags(story)
+        print(storytags[story])
+    return render_template("allstories.html", links = storyLinks, storytags = storytags)
 
 #=================================ADD ENTRY=====================================
 
