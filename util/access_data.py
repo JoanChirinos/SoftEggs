@@ -321,3 +321,53 @@ def add(n_story,content,id):
     db.close()
     return True
 #print(add("egg boss", "He was so cool.", 19))
+
+def all_stories():
+    createDatabase()
+
+    DB_FILE= "data/discoeggs.db"
+    db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
+    c = db.cursor()
+
+    command = "SELECT story_name from stories"
+    c.execute(command)
+
+    stories = c.fetchall()
+    db.commit()
+    db.close()
+
+    if (len(stories) == 0):
+        return ""
+
+    ret = []
+    for each in stories:
+        ret.append(each[0])
+
+    return ret
+
+#print(all_stories())
+
+def all_tags():
+    createDatabase()
+
+    DB_FILE= "data/discoeggs.db"
+    db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
+    c = db.cursor()
+
+    command = "SELECT tag from tags"
+    c.execute(command)
+
+    stags = c.fetchall()
+    db.commit()
+    db.close()
+
+    if (len(stags) == 0):
+        return ""
+
+    ret = []
+    for each in stags:
+        ret.append(each[0])
+
+    return ret
+
+#print(all_tags())

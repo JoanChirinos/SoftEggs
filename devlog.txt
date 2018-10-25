@@ -184,3 +184,8 @@ the story
 3. Created template in app.py for viewAllS() that would lead
 to a link with the links of all the stories
 ==============================================================
+
+fabihaT -- 2018-10-24 22:53
+--------------------------------------------------------------
+1. Made functions to get all the tags and stories.
+==============================================================
