@@ -113,7 +113,10 @@ def home():
     displays those stories in full on home page.
     '''
     stories = access_data.view_all(access_data.get_id(session["username"]))
-    return render_template("home.html",stories = stories)
+    storytags = {}
+    for story in stories:
+        storytags[story] = access_data.all_tags(story)
+    return render_template("home.html",stories = stories, storytags= storytags)
 
 
 

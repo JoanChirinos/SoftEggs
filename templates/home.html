@@ -21,6 +21,10 @@ Home
 <b>{{story}}</b><br>
 {%for entry in stories[story]%}
 {{entry}}<br>
+{%endfor%}<br>
+Tags:
+{%for tag in storytags[story]%}
+{{tag}} 
 {%endfor%}
 <br><hr>
 {%endfor%}

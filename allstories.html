@@ -1,0 +1,16 @@
+{% extends "sitebase.html" %}
+
+
+
+{%block title%}
+All Stories
+{%endblock%}
+
+
+
+{% block body %}
+{% for story in links %}
+  <a href = {{links[story]}}><h2> {{story}} </h2></a>
+  <hr>
+{% endfor %}
+{% endblock %}
