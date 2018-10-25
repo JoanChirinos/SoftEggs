@@ -62,7 +62,9 @@ def authRegister():
         flash("Passwords do not match")
         return redirect(url_for("register"))
     else:
-        access_data.sign_up(request.form['username'].strip(" "), request.form['password'])
+        if not access_data.sign_up(request.form['username'].strip(" "), request.form['password']):
+            flash("Username taken")
+            return redirect(url_for("register"))
         return redirect(url_for("login"))
 
 
@@ -75,13 +77,17 @@ def authorize():
     If not,flashes message and redirects to login.
     If so, redirects to home
     '''
+    #try:
+    #    if session['username']:
+    #        redirect(url_for('logout'))
+    #except:
+    #    pass
     if access_data.login(request.form["username"], request.form["password"]):
         session['username'] = request.form['username']
         return redirect(url_for("home"))
     else:
         flash("Incorrect Login Information")
         return redirect(url_for("login"))
-
 
 
 @app.route('/logout')
@@ -119,13 +125,14 @@ def view():
     '''
     return render_template("view.html") #include info from database afterward to be displayed
 
-#@app.route("allstories")
-#def viewAllS():
-#    storyLinks = dict()
-    #stories = access_data.get_all_stories()
-    #for story in stories:
-    #    storyLinks[story] = ("/add?title=" + "_".join(story.split(" ")) + "&" + "content=" + "_".join(access_data.view_one(story).split(" ")))
-    #return render_template("allstories.html", links = )
+@app.route("/allstories")
+def viewAllS():
+    ''' Displays all stories in databases'''
+    storyLinks = dict()
+    stories = access_data.all_stories()
+    for story in stories:
+        storyLinks[story] = ("/add?title=" + "_".join(story.split(" ")) + "&" + "content=" + "_".join(access_data.view_one(story).split(" ")))
+    return render_template("allstories.html", links = storyLinks)
 
 #=================================ADD ENTRY=====================================
 

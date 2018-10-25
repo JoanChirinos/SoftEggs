@@ -18,10 +18,11 @@ Login
    Password : <input type = "password" name = "password">
    <input type = "submit" name = "Login">
  </form>
+ <font color = "red">
  {% set msg = get_flashed_messages() %}
  {% for each in msg %}
  {{each}}
- {% endfor %}
+ {% endfor %}</font>
  <br><hr>
  <!-- link to register -->
  <a href = "/register"> Not Registered Yet? </a>

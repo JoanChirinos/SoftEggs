@@ -20,11 +20,12 @@ Username must be 4 characters or more<br><br>
   Confirm Password : <input type = "password" name = "confirmpw">
   <input type = "submit" name = "Register">
 </form>
+<font color = 'red'>
 {% set msg = get_flashed_messages() %}
 {% for each in msg %}
 {{each}}
 {% endfor %}
-<br>
+<br><br></font>
 <!-- link to login -->
 <a href = "/login"> Back to Login </a>
 {% endblock %}
