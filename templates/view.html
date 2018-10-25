@@ -1,0 +1,19 @@
+{% extends "sitebase.html" %}
+
+
+{% block title %}
+{{story}}
+{% endblock %}
+
+<!-- story title -->
+{% block head %}
+{{super()}}
+<h1>{{story}}</h1>
+{% endblock %}
+
+<!--shows the whole story -->
+{% block body %}
+{% for entry in content %}
+  {{entry}}<br><hr>
+{% endfor %}
+{% endblock %}

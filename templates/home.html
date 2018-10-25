@@ -11,21 +11,19 @@ Home
 <font color="red"><b>{% set msg = get_flashed_messages() %}
 {% for each in msg %}
   {{each}}
-  <br><br>
+  <br><hr><br>
 {% endfor %}</b></font>
 {% endblock %}
 
 <!--shows the whole story for the ones you edited -->
 {% block body %}
-{% for story in stories %}
-<b>{{story}}</b><br>
-{%for entry in stories[story]%}
-{{entry}}<br>
-{%endfor%}<br>
-Tags:
-{%for tag in storytags[story]%}
-{{tag}} 
-{%endfor%}
-<br><hr>
+{% for story in storyStuff %}
+  <a href = "/view?title={{story}}&content={{storyStuff[story]}}"><h2> {{spaceJoin(story)}} </h2></a>
+  <hr>
+  Tags:
+  {%for tag in storytags[story]%}
+  {{tag}}
+  {%endfor%}
+  <br><hr>
 {%endfor%}
 {% endblock %}

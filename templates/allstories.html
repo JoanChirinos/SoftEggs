@@ -1,16 +1,17 @@
 {% extends "sitebase.html" %}
 
-
-
 {%block title%}
 All Stories
 {%endblock%}
 
-
-
+<!-- displays links to all the stories with tags -->
 {% block body %}
 {% for story in links %}
   <a href = {{links[story]}}><h2> {{story}} </h2></a>
   <hr>
+  Tags:
+  {% for tag in storytags[story] %}
+  {{tag}}
+  {% endfor %}<hr>
 {% endfor %}
 {% endblock %}

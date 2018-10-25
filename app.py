@@ -112,22 +112,25 @@ def home():
     Accesses database to retrieve stories that the user has already edited,
     displays those stories in full on home page.
     '''
+    def ridOfUScore(uScoreTitle):
+        return " ".join(uScoreTitle.split("_"))
     stories = access_data.view_all(access_data.get_id(session["username"]))
+    storyInfo = dict()
     storytags = {}
     for story in stories:
         storytags[story] = access_data.all_tags(story)
+        title = "_".join(story.split(" "))
+        content = "_".join(stories[story])
+        storyInfo[title] = content
         print(storytags[story])
-    return render_template("home.html",stories = stories, storytags= storytags)
-
-
+    return render_template("home.html",storyStuff = storyInfo, storytags= storytags, spaceJoin = ridOfUScore)
 
 @app.route("/view")
 def view():
-    '''NOT CURRENTLY IN USE
-
-    Allows user to view individual story (previously edited) on a single page
-    '''
-    return render_template("view.html") #include info from database afterward to be displayed
+    '''    Allows user to view individual story (previously edited) on a single page    '''
+    title = " ".join(request.args['title'].split("_"))
+    sContent = request.args['content'].split("_")
+    return render_template("view.html",story = title, content = sContent) #include info from database afterward to be displayed
 
 @app.route("/allstories")
 def viewAllS():
