@@ -14,7 +14,7 @@ def createDatabase():
     ''' Creates a database if user decided to delete the database '''
 
 
-    DB_FILE="../data/discoeggs.db"
+    DB_FILE="data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
 
