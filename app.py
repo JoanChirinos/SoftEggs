@@ -52,6 +52,7 @@ def authRegister():
 
     If all tests passed, user information is added to database and user is redirected to login
     '''
+
     if request.form['username'].strip(" ") == "" or len(request.form['username'].strip(" ")) < 4:
         flash("Username is too short")
         return redirect(url_for("register"))
@@ -102,6 +103,9 @@ def logout():
     return redirect(url_for('login'))
 
 
+def verify():
+    if "username" not in session:
+        redirect(url_for("login"))
 
 #===================================VIEW========================================
 
@@ -112,6 +116,7 @@ def home():
     Accesses database to retrieve stories that the user has already edited,
     displays those stories in full on home page.
     '''
+    verify()
     def ridOfUScore(uScoreTitle):
         return " ".join(uScoreTitle.split("_"))
     stories = access_data.view_all(access_data.get_id(session["username"]))
@@ -130,6 +135,7 @@ def home():
 @app.route("/view")
 def view():
     '''    Allows user to view individual story (previously edited) on a single page    '''
+    verify()
     title = " ".join(request.args['title'].split("_"))
     sContent = request.args['content'].split("_")
     return render_template("view.html",story = title, content = sContent) #include info from database afterward to be displayed
@@ -139,6 +145,7 @@ def view():
 @app.route("/allstories")
 def viewAllS():
     ''' Displays all stories in databases'''
+    verify()
     storyLinks = dict()
     stories = access_data.all_stories()
     for story in stories:
@@ -159,6 +166,7 @@ def add():
     Checks if user previously added, redirects to view and flashes error if so
     If not, displays page with most recent entry of story and textbox for the user's new entry
     '''
+    verify()
     sTitle = " ".join(request.args["title"].split("_"))
     if access_data.prev_add(sTitle, access_data.get_id(session["username"])):
         flash("You have already added to that story, you cannot add any more entries")
@@ -176,6 +184,7 @@ def addStory():
     If the entry is empty, flashes an error
     Title of story and content of your entry is passed into the database, then you're redirected to home
     '''
+    verify()
     if request.form["entry"].strip(" ") == "":
         flash("Please Create an Entry")
         return redirect(url_for("add"))
@@ -191,6 +200,7 @@ def searchresults():
 
     Compares input with tags and titles in databases and displays links to those that match
     '''
+    verify()
     def ridOfUScore(uScoreTitle):
         return " ".join(uScoreTitle.split("_"))
     storyStuff = dict()
@@ -210,6 +220,7 @@ def searchresults():
 @app.route("/create")
 def create():
     '''Opens page allowing user to create new story'''
+    verify()
     return render_template("create.html")
 
 
@@ -224,6 +235,7 @@ def createstory():
     If it matches existing story, flashes error and redirects to /create
     If it meets requirements, story is added to database and user is redirected to /home
     '''
+    verify()
     if (request.args["storytitle"].strip(" ") == "" or
         request.args["entry"].strip(" ") == "" or
         request.args["tags"].strip(" ") == ""):
