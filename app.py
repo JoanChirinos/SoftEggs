@@ -125,12 +125,16 @@ def home():
         print(storytags[story])
     return render_template("home.html",storyStuff = storyInfo, storytags= storytags, spaceJoin = ridOfUScore)
 
+
+
 @app.route("/view")
 def view():
     '''    Allows user to view individual story (previously edited) on a single page    '''
     title = " ".join(request.args['title'].split("_"))
     sContent = request.args['content'].split("_")
     return render_template("view.html",story = title, content = sContent) #include info from database afterward to be displayed
+
+
 
 @app.route("/allstories")
 def viewAllS():
@@ -195,6 +199,8 @@ def searchresults():
         title = "_".join(story.split(" "))
         content = "_".join(access_data.view_one(story).split(" "))
         storyStuff[title] = content
+    #if access_data.exists(request.args['input'])["title"]:
+    #    storyStuff[request.form["input"]] = content
     return render_template("search.html", storyStuff = storyStuff, spaceJoin = ridOfUScore)
 
 
@@ -223,8 +229,11 @@ def createstory():
         request.args["tags"].strip(" ") == ""):
         flash("Please Fill Out Everything")
         return redirect(url_for("create"))
-    access_data.create(request.args["storytitle"], request.args["entry"], request.args["tags"], access_data.get_id(session['username']))
-    return redirect(url_for("home"))
+    if access_data.create(request.args["storytitle"], request.args["entry"], request.args["tags"], access_data.get_id(session['username'])):
+        return redirect(url_for("home"))
+    else:
+        flash("A story with this title is taken")
+        return redirect(url_for("create"))
 
 
 
