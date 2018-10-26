@@ -5,17 +5,19 @@
 Home
 {% endblock %}
 
+{% set title = "Home"%}
 <!--if you already added to a story, flash an error -->
 {% block head %}
-{{super()}}<br>
-<font color="red"><b>{% set msg = get_flashed_messages() %}
-{% for each in msg %}
-  {{each}}
-  <br><hr><br>
-{% endfor %}</b></font>
+  {{super()}}<br>
+  <font color="red"><b>
+    {% set msg = get_flashed_messages() %}
+    {% for each in msg %}
+      {{each}}
+      <br><hr><br>
+    {% endfor %}</b></font>
 {% endblock %}
 
-<!--shows the whole story for the ones you edited -->
+<!--shows the links of stories you edited -->
 {% block body %}
 {% for story in storyStuff %}
   <a href = "/view?title={{story}}&content={{storyStuff[story]}}"><h2> {{spaceJoin(story)}} </h2></a>
