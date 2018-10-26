@@ -14,7 +14,7 @@ def createDatabase():
     ''' Creates a database if user decided to delete the database '''
 
 
-    DB_FILE="data/discoeggs.db"
+    DB_FILE="../data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
 
@@ -325,11 +325,11 @@ def add(n_story,content,id):
 def all_stories():
     createDatabase()
 
-    DB_FILE= "data/discoeggs.db"
+    DB_FILE= "../data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
 
-    command = "SELECT story_name from stories"
+    command = "SELECT DISTINCT story_name from stories"
     c.execute(command)
 
     stories = c.fetchall()
@@ -345,7 +345,7 @@ def all_stories():
 
     return ret
 
-#print(all_stories())
+print(all_stories())
 
 def all_tags(single):
     createDatabase()
@@ -354,7 +354,7 @@ def all_tags(single):
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
 
-    command = "SELECT tag FROM tags WHERE story_name=\'{}\'".format(single)
+    command = "SELECT DISTINCT tag FROM tags WHERE story_name=\'{}\'".format(single)
     c.execute(command)
 
     stags = c.fetchall()
