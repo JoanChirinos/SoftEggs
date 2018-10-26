@@ -121,7 +121,7 @@ def home():
         return " ".join(uScoreTitle.split("_"))
     stories = access_data.view_all(access_data.get_id(session["username"]))
     storyInfo = dict()
-    storytags = {}
+    storytags = dict()
     for story in stories:
         storytags[story] = access_data.all_tags(story)
         title = "_".join(story.split(" "))
