@@ -325,7 +325,7 @@ def add(n_story,content,id):
 def all_stories():
     createDatabase()
 
-    DB_FILE= "../data/discoeggs.db"
+    DB_FILE= "data/discoeggs.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
 
