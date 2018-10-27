@@ -217,3 +217,9 @@ canaleB -- 2018-10-26 22:25
 2. Fixed display issue
 3. Fixed formatting on html pages
 ==============================================================
+
+chenD -- 2018-10-27 02:22
+--------------------------------------------------------------
+1. Made the search result route work similarly to home and add
+2. Fixed viewing the stories that you've edited
+==============================================================

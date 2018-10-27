@@ -118,14 +118,19 @@ def home():
     if "username" not in session:
         return redirect(url_for("login"))
     storyLinks = dict()
-    stories = access_data.view_all(access_data.get_id(session["username"]))
+    id = access_data.get_id(session["username"])
+    stories = access_data.view_all(id)
+    #makes it so that the words in each entry are split with _'s
     for story in stories:
-        storyLinks[story] = ("/add?title=" + "_".join(story.split(" ")) + "&" + "content=" + "_".join(access_data.view_one(story).split(" ")))
+        index = 0
+        for each in stories[story]:
+            stories[story][index] = "_".join(each.split(" "))
+            index += 1
+        #joins each entry with -'s to be split later
+        storyLinks[story] = ("/view?title=" + "_".join(story.split(" ")) + "&" + "content=" + "-".join(stories[story]))
     storytags = dict()
     for story in stories:
-        print(story)
         storytags[story] = access_data.all_tags(story)
-        print(storytags[story])
     return render_template("home.html", links = storyLinks, storytags = storytags)
 
 
@@ -137,7 +142,13 @@ def view():
     if "username" not in session:
         return redirect(url_for("login"))
     title = " ".join(request.args['title'].split("_"))
-    sContent = request.args['content'].split("_")
+    #splits whole story into individual entries
+    sContent = request.args['content'].split("-")
+    index = 0
+    #makes the words in each entry be joined with spaces
+    for content in sContent:
+        sContent[index] = " ".join(sContent[index].split("_"))
+        index += 1
     return render_template("view.html",story = title, content = sContent) #include info from database afterward to be displayed
 
 
@@ -153,9 +164,7 @@ def viewAllS():
         storyLinks[story] = ("/add?title=" + "_".join(story.split(" ")) + "&" + "content=" + "_".join(access_data.view_one(story).split(" ")))
     storytags = dict()
     for story in stories:
-        print(story)
         storytags[story] = access_data.all_tags(story)
-        print(storytags[story])
     return render_template("allstories.html", links = storyLinks, storytags = storytags)
 
 #=================================ADD ENTRY=====================================
@@ -205,17 +214,13 @@ def searchresults():
     '''
     if "username" not in session:
         return redirect(url_for("login"))
-    def ridOfUScore(uScoreTitle):
-        return " ".join(uScoreTitle.split("_"))
-    storyStuff = dict()
+    storyLinks = dict()
     stories = access_data.stories_of(request.args['input'].lower())
     for story in stories:
-        title = "_".join(story.split(" "))
-        content = "_".join(access_data.view_one(story).split(" "))
-        storyStuff[title] = content
+        storyLinks[story] = ("/add?title=" + "_".join(story.split(" ")) + "&" + "content=" + "_".join(access_data.view_one(story).split(" ")))
     #if access_data.exists(request.args['input'])["title"]:
     #    storyStuff[request.form["input"]] = content
-    return render_template("search.html", storyStuff = storyStuff, spaceJoin = ridOfUScore)
+    return render_template("search.html", storyLinks = storyLinks)
 
 
 
