@@ -211,7 +211,9 @@ canaleB -- 2018-10-25 20:49
    no repeat users or story titles
 ==============================================================
 
-canaleB -- 2018-10-25 20:49
+canaleB -- 2018-10-26 22:25
 --------------------------------------------------------------
 1. Fixed issue with displaying tags with stories
+2. Fixed display issue
+3. Fixed formatting on html pages
 ==============================================================
