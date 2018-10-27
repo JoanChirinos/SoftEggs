@@ -210,3 +210,8 @@ canaleB -- 2018-10-25 20:49
 4. Added steps for sign in and create to make sure there were
    no repeat users or story titles
 ==============================================================
+
+canaleB -- 2018-10-25 20:49
+--------------------------------------------------------------
+1. Fixed issue with displaying tags with stories
+==============================================================
