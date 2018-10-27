@@ -12,15 +12,12 @@ pd6
 
 <!--search bar and logout button here -->
 {% block head %}
-<h1> <a href="/home" > STORYTIME</a>  - {{title}}</h1>
+<h1> <a href="/home"> STORYTIME </a> - {{title}} </h1>
 <form action="/search">
   Search:<input type = "search" name="input"> <font color ="white"> ______</font>
   <a href = "/allstories"> View All Stories </a><font color ="white"> ______</font>
   <a href = "/create"> Create a Story </a><font color ="white"> ______</font>
   <a href = "/logout"> Logout </a>
 </form>
-<!--<form action = "/logout">
-  <input type = "submit" value = "logout">
-</form>-->
 <hr>
 {% endblock %}

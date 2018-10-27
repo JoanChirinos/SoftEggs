@@ -126,7 +126,7 @@ def home():
         print(story)
         storytags[story] = access_data.all_tags(story)
         print(storytags[story])
-    return render_template("allstories.html", links = storyLinks, storytags = storytags)
+    return render_template("home.html", links = storyLinks, storytags = storytags)
 
 
 

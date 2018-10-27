@@ -10,11 +10,11 @@ pd6
 
 {% extends "sitebase.html" %}
 
-{%block title%}
+{% block title %}
 All Stories
-{%endblock%}
+{% endblock %}
 
-{%set title = "All Stories"%}
+{% set title = "All Stories" %}
 
 
 <!-- displays links to all the stories with tags -->
@@ -24,7 +24,7 @@ All Stories
   <hr>
   Tags:
   {% for tag in storytags[story] %}
-  {{tag}}
+    {{tag}}
   {% endfor %}<hr>
 {% endfor %}
 {% endblock %}
