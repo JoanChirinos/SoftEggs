@@ -208,7 +208,7 @@ def searchresults():
     def ridOfUScore(uScoreTitle):
         return " ".join(uScoreTitle.split("_"))
     storyStuff = dict()
-    stories = access_data.stories_of(request.args['input'])
+    stories = access_data.stories_of(request.args['input'].lower())
     for story in stories:
         title = "_".join(story.split(" "))
         content = "_".join(access_data.view_one(story).split(" "))
@@ -247,7 +247,7 @@ def createstory():
         request.args["tags"].strip(" ") == ""):
         flash("Please Fill Out Everything")
         return redirect(url_for("create"))
-    if access_data.create(request.args["storytitle"], request.args["entry"], request.args["tags"], access_data.get_id(session['username'])):
+    if access_data.create(request.args["storytitle"], request.args["entry"], request.args["tags"].lower(), access_data.get_id(session['username'])):
         return redirect(url_for("home"))
     else:
         flash("A story with this title is taken")
