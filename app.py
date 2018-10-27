@@ -117,18 +117,17 @@ def home():
     '''
     if "username" not in session:
         return redirect(url_for("login"))
-    def ridOfUScore(uScoreTitle):
-        return " ".join(uScoreTitle.split("_"))
+    storyLinks = dict()
     stories = access_data.view_all(access_data.get_id(session["username"]))
-    storyInfo = dict()
+    for story in stories:
+        storyLinks[story] = ("/add?title=" + "_".join(story.split(" ")) + "&" + "content=" + "_".join(access_data.view_one(story).split(" ")))
     storytags = dict()
     for story in stories:
+        print(story)
         storytags[story] = access_data.all_tags(story)
-        title = "_".join(story.split(" "))
-        content = "_".join(stories[story])
-        storyInfo[title] = content
         print(storytags[story])
-    return render_template("home.html",storyStuff = storyInfo, storytags= storytags, spaceJoin = ridOfUScore)
+    return render_template("allstories.html", links = storyLinks, storytags = storytags)
+
 
 
 
